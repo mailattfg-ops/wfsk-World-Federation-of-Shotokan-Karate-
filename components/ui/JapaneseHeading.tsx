@@ -10,7 +10,7 @@ export function JapaneseHeading({ text, className = "text-[12px]" }: JapaneseHea
     const isLarge = className.includes("text-lg");
     const lineClass = isLarge
         ? "h-[2px] bg-[#FF0000] grow rounded-full"
-        : "h-[1px] bg-[#FF0000] w-12 shrink-0";
+        : "h-[1px] bg-[#FF0000] grow sm:w-12 sm:grow-0 shrink";
 
     return (
         <div className={`flex items-center gap-2 mt-1 w-full ${isLarge ? "gap-3 mt-2" : ""}`}>

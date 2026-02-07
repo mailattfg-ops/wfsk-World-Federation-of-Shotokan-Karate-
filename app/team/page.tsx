@@ -24,7 +24,7 @@ export default function TeamPage() {
         <div className="min-h-screen bg-[#F5F5F5] font-(family-name:--font-geist-sans)">
             <Header />
 
-            <main className="pt-28 pb-10 w-full mx-auto space-y-20 bg-[#E5E5E5] px-4">
+            <main className="pt-28 pb-10 w-full mx-auto space-y-10 md:space-y-20 bg-[#E5E5E5] px-2 md:px-4">
                 <DirectorsSection />
                 <ExecutiveMembersSection />
                 <InstructorsSection countryName="UAE" flagCode="ae" instructors={UAE_INSTRUCTORS} />

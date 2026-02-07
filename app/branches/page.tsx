@@ -8,9 +8,9 @@ export default function BranchesPage() {
         <div className="min-h-screen bg-[#F5F5F5] font-(family-name:--font-geist-sans)">
             <Header />
 
-            <main className="pt-32 pb-16 w-full mx-auto space-y-20 bg-[#E5E5E5]">
+            <main className="w-full mx-auto space-y-0 sm:space-y-20 bg-[#E5E5E5] pt-24 md:pt-32">
                 <BranchesSection />
-                <ContactUs className="p-4" />
+                <ContactUs className="px-4 py-1 md:py-4" />
             </main>
 
             <Footer />

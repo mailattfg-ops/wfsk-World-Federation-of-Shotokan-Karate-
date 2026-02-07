@@ -16,7 +16,7 @@ export default function Home() {
       <WhoWeAre />
       <OurTeam />
       <OurPrograms />
-      <ContactUs />
+      <ContactUs  className="p-2 sm:p-4"/>
       <Footer />
     </main>
   );

@@ -17,7 +17,7 @@ interface InstructorsSectionProps {
 export function InstructorsSection({ countryName, flagCode, instructors }: InstructorsSectionProps) {
     return (
         <section className="w-full">
-            <div className="w-full mx-auto space-y-12">
+            <div className="w-full mx-auto space-y-4 md:space-y-8 lg:space-y-12">
 
                 {/* Header Card */}
                 <div className="bg-white rounded-lg p-8 sm:p-10 shadow-sm flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
@@ -38,14 +38,13 @@ export function InstructorsSection({ countryName, flagCode, instructors }: Instr
                     {/* Text */}
                     <div className="text-center sm:text-left">
                         <h2 className="text-3xl sm:text-4xl font-bold text-black font-(family-name:--font-belanosima) leading-tight">
-                            Our Instructors <br />
-                            in {countryName}
+                            Our Instructors <br className="hidden md:block" /> in {countryName}
                         </h2>
                     </div>
                 </div>
 
                 {/* Team Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6 px-1 sm:px-0">
                     {instructors.map((member, index) => (
                         <TeamCard
                             key={index}

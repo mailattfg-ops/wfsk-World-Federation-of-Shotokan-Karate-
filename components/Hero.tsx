@@ -21,9 +21,9 @@ export function Hero() {
 
                     {/* Left Side: Main Title */}
                     <div className="flex-shrink-0 max-w-4xl pb-4 lg:pb-0">
-                        <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-semibold tracking-tight leading-[1.05]">
+                        <h1 className="text-3xl sm:text-4xl lg:text-[42px] tracking-tight leading-[1.05] font-(family-name:--font-inter)">
                             World Federation of <br />
-                            <span className="text-[#F02306] font-bold">Shotokan Karate</span>
+                            <span className="text-[#F02306] font-semibold">Shotokan Karate</span>
                         </h1>
                     </div>
 
@@ -38,30 +38,30 @@ export function Hero() {
 
                             {/* Item 1 */}
                             <div className="flex flex-col gap-3">
-                                <h3 className="font-semibold text-base lg:text-[18px] leading-[1.15] tracking-tight">
+                                <h3 className="font-semibold text-base lg:text-[22px] leading-[1.15] tracking-tight">
                                     32+ Years of <br className="hidden lg:block" /> Martial Arts <br className="hidden lg:block" /> Experience
                                 </h3>
-                                <p className="text-zinc-400 text-xs lg:text-[11px] font-normal leading-relaxed max-w-[200px]">
+                                <p className="text-zinc-400 text-xs lg:text-[14px] font-normal leading-relaxed max-w-[220px]">
                                     Backed by over three decades of national and international martial arts experience.
                                 </p>
                             </div>
 
                             {/* Item 2 */}
                             <div className="flex flex-col gap-3">
-                                <h3 className="font-semibold text-base lg:text-[18px] leading-[1.15] tracking-tight">
+                                <h3 className="font-semibold text-base lg:text-[22px] leading-[1.15] tracking-tight">
                                     International <br className="hidden lg:block" /> Presence in <br className="hidden lg:block" /> 5+ Countries
                                 </h3>
-                                <p className="text-zinc-400 text-xs lg:text-[11px] font-normal leading-relaxed max-w-[200px]">
+                                <p className="text-zinc-400 text-xs lg:text-[14px] font-normal leading-relaxed max-w-[220px]">
                                     Active across India, UAE, Qatar, Bahrain, and Portugal with unified global standards.
                                 </p>
                             </div>
 
                             {/* Item 3 */}
                             <div className="flex flex-col gap-3">
-                                <h3 className="font-semibold text-base lg:text-[18px] leading-[1.15] tracking-tight">
+                                <h3 className="font-semibold text-base lg:text-[22px] leading-[1.15] tracking-tight">
                                     ISO 9001:2015 <br className="hidden lg:block" /> Certified <br className="hidden lg:block" /> Federation
                                 </h3>
-                                <p className="text-zinc-400 text-xs lg:text-[11px] font-normal leading-relaxed max-w-[200px]">
+                                <p className="text-zinc-400 text-xs lg:text-[14px] font-normal leading-relaxed max-w-[220px]">
                                     Globally recognized quality systems ensuring structured, professional training.
                                 </p>
                             </div>

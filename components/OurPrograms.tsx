@@ -40,13 +40,13 @@ export function OurPrograms() {
                 {/* Programs Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {PROGRAMS.map((program, index) => (
-                        <div key={index} className="bg-white overflow-hidden flex shadow-sm min-h-[350px] sm:min-h-[400px] lg:min-h-[477px]">
-                            {/* Text Content (Left) */}
-                            <div className="w-1/2 p-6 sm:p-8 flex flex-col justify-between">
+                        <div key={index} className="bg-white overflow-hidden flex flex-col sm:flex-row shadow-sm min-h-[350px] sm:min-h-[400px] lg:min-h-[477px]">
+                            {/* Text Content */}
+                            <div className="w-full sm:w-1/2 p-6 sm:p-8 flex flex-col justify-between order-2 sm:order-1">
                                 {/* Badges */}
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {program.badges.map((badge, idx) => (
-                                        <span key={idx} className="bg-[#E6E6E6] text-xs sm:text-sm font-semibold font-g text-[#262626] px-3 py-1 rounded-md font-(family-name:--font-geist-sans)">
+                                        <span key={idx} className="bg-[#E6E6E6] text-xs sm:text-sm font-semibold text-[#262626] px-3 py-1 rounded-md font-(family-name:--font-geist-sans)">
                                             {badge}
                                         </span>
                                     ))}
@@ -63,8 +63,8 @@ export function OurPrograms() {
                                 </div>
                             </div>
 
-                            {/* Image (Right) */}
-                            <div className="w-1/2 relative">
+                            {/* Image */}
+                            <div className="w-full sm:w-1/2 h-48 sm:h-auto relative order-1 sm:order-2">
                                 <Image
                                     src={program.image}
                                     alt={program.title}

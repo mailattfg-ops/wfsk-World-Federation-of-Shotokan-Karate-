@@ -16,14 +16,14 @@ const BLACK_BELTS = [
 export function BlackBeltsSection() {
     return (
         <section className="w-full p-4">
-            <div className="w-full mx-auto space-y-12">
+            <div className="w-full mx-auto space-y-4 sm:space-y-12">
                 {/* Header */}
                 <SectionHeader title={<>Our <br /> Black Belties</>}>
                     The World Federation of Shotokan Karate is proud to announce that we are producing more black belts every year. Our instructors are highly experienced and dedicated to teaching students the art of Shotokan Karate. Join us today!
                 </SectionHeader>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Grid - 2 columns on mobile */}
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-6 p-2 sm:p-4">
                     {BLACK_BELTS.map((member, index) => (
                         <TeamCard
                             key={index}

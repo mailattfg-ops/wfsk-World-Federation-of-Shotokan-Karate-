@@ -14,17 +14,16 @@ const EXECUTIVE_MEMBERS = [
 export function ExecutiveMembersSection() {
     return (
         <section className="w-full">
-            <div className="w-full mx-auto space-y-12">
-                {/* Centered Header */}
-                <div className="bg-white rounded-lg p-10 shadow-sm flex flex-col items-center justify-center text-center">
+            <div className="w-full mx-auto space-y-4 md:space-y-8 lg:space-y-12">
+                {/* Centered Header (Restored Desktop Look with Responsive scaling) */}
+                <div className="bg-white rounded-lg p-8 sm:p-10 shadow-sm flex flex-col items-center justify-center text-center">
                     <h2 className="text-4xl sm:text-5xl font-bold text-black font-(family-name:--font-belanosima) leading-tight">
-                        Executive <br />
-                        Members
+                        Executive <br className="hidden md:block" /> Members
                     </h2>
                 </div>
 
-                {/* Members Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Members Grid - Padding matched to Header Box for alignment */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6 px-1 sm:px-0">
                     {EXECUTIVE_MEMBERS.map((member, index) => (
                         <TeamCard
                             key={index}

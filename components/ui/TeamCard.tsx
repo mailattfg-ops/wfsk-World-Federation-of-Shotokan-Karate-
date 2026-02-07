@@ -20,13 +20,13 @@ export function TeamCard({ name, title, image, active = false }: TeamCardProps) 
             <div className="absolute top-0 left-0 w-full h-full bg-linear-to-b from-transparent via-transparent to-black/20"></div>
 
             {/* Bottom Card */}
-            <div className="absolute bottom-3 left-3 right-3 bg-[#1A1A1A] rounded-xl p-3 flex justify-between items-center z-10">
-                <div className="flex flex-col">
-                    <h3 className="text-white font-bold text-sm sm:text-base font-(family-name:--font-belanosima) tracking-wide">{name}</h3>
-                    <p className="text-[10px] text-gray-400 font-(family-name:--font-geist-sans)">{title}</p>
+            <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 bg-[#111111] rounded-md sm:rounded-xl p-1.5 sm:p-3 flex justify-between items-center z-10 shadow-lg">
+                <div className="flex flex-col gap-0.5">
+                    <h3 className="text-white font-bold text-[11px] sm:text-base font-(family-name:--font-belanosima) tracking-wide leading-tight">{name}</h3>
+                    <p className="text-[6px] sm:text-[10px] text-gray-400 font-(family-name:--font-geist-sans) leading-tight">{title}</p>
                 </div>
-                <div className={`w-8 h-8 rounded-full border border-gray-600 flex items-center justify-center shrink-0 ${active ? 'bg-[#E81E26] border-none' : 'bg-transparent'}`}>
-                    {/* Optional: Add icon/indicator code here if needed later */}
+                <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${active ? 'bg-[#E81E26]' : 'bg-black border border-white/30'}`}>
+                    {/* Indicator */}
                 </div>
             </div>
         </div>

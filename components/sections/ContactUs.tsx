@@ -7,103 +7,103 @@ interface ContactUsProps {
 export function ContactUs({ className = "" }: ContactUsProps) {
     return (
         <section className={`w-full bg-[#E5E5E5] ${className}`}>
-            <div className="w-full mx-auto bg-white rounded-xl shadow-sm flex flex-col lg:flex-row min-h-[600px] p-4">
+            <div className="w-full mx-auto bg-white rounded-lg shadow-sm flex flex-col md:flex-row min-h-[600px] p-2 sm:p-4">
                 {/* Left Side - Image & Overlay */}
-                <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-full rounded-2xl overflow-hidden">
+                <div className="relative w-full md:w-1/2 min-h-[450px] md:min-h-full rounded-2xl overflow-hidden">
                     <Image
                         src="/images/contact_img.jpg"
                         alt="Karate Students"
                         fill
                         className="object-cover"
                     />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                    {/* Gradient Overlay - Richer bottom for readability */}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
 
                     {/* Content */}
-                    <div className="absolute bottom-0 left-0 w-full p-8 sm:p-12 mb-2">
-                        <h2 className="text-3xl sm:text-5xl font-bold text-white font-(family-name:--font-belanosima) leading-tight mb-2">
+                    <div className="absolute bottom-0 left-0 w-full p-6 sm:p-10 lg:p-12 mb-2">
+                        <h2 className="text-[27px] sm:text-4xl lg:text-5xl font-bold text-white font-(family-name:--font-geist-sans) leading-tight mb-2 tracking-tight">
                             Join World <br />
                             Federation Karate
                         </h2>
-                        <p className="text-white/90 text-sm sm:text-base font-medium mb-6">
+                        <p className="text-white/90 text-[14px] sm:text-base font-medium mb-6 leading-tight">
                             Learn Karate and keep your health in check.
                         </p>
 
                         <Link
                             href="/register"
-                            className="inline-flex items-center gap-2 bg-[#E81E26] text-white px-6 py-3 rounded-md font-bold text-sm tracking-wide hover:bg-[#B0171D] transition-colors uppercase"
+                            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#E81E26] text-white w-[114px] h-[28px] sm:w-auto sm:h-auto px-3 py-2 sm:px-6 sm:py-4 rounded-md sm:rounded-lg font-extrabold text-[11px] sm:text-base tracking-wide hover:bg-[#B0171D] transition-all group"
                         >
-                            Book Now
-                            {/* Long Arrow SVG */}
+                            <span className="shrink-0">Book Now</span>
                             <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
+                                width="32"
+                                height="8"
+                                viewBox="0 0 32 8"
                                 fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-8 sm:w-16 h-auto"
                             >
-                                <path d="M2 12h20" />
-                                <path d="m16 6 6 6-6 6" />
+                                <path
+                                    d="M0 4H31M31 4L27.5 1M31 4L27.5 7"
+                                    stroke="white"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
                             </svg>
                         </Link>
                     </div>
                 </div>
 
                 {/* Right Side - Form */}
-                <div className="w-full lg:w-1/2 p-8 sm:p-16 flex flex-col justify-center">
-                    <div className="mb-8">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-[#111111] font-(family-name:--font-belanosima) mb-3">
+                <div className="w-full md:w-1/2 p-6 sm:p-10 lg:p-16 flex flex-col justify-center">
+                    <div className="mb-6 sm:mb-8 text-center sm:text-left">
+                        <h2 className="text-2xl sm:text-4xl font-extrabold text-[#111111] font-(family-name:--font-geist-sans) mb-2 sm:mb-3">
                             Contact Us
                         </h2>
-                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm sm:text-base">
+                        <p className="text-[#8F8F8F] font-medium font-(family-name:--font-geist-sans) text-xs sm:text-base">
                             Enter the information below and we will help you as <br className="hidden sm:block" />
                             soon as possible
                         </p>
                     </div>
 
                     <form className="space-y-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                             <div className="space-y-2">
-                                <label className="text-[13px] font-bold text-[#111111] uppercase tracking-wide">
+                                <label className="text-[13px] font-semibold font-(family-name:--font-geist-sans) text-[#171717B2] uppercase">
                                     Your Name
                                 </label>
                                 <input
                                     type="text"
                                     placeholder="Michael"
-                                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                    className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[13px] font-bold text-[#111111] uppercase tracking-wide">
+                                <label className="text-[13px] font-semibold font-(family-name:--font-geist-sans) text-[#171717B2] uppercase">
                                     Phone Number
                                 </label>
                                 <input
                                     type="text"
                                     placeholder="726929669526"
-                                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                    className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-[13px] font-bold text-[#111111] uppercase tracking-wide">
+                            <label className="text-[13px] font-semibold font-(family-name:--font-geist-sans) text-[#171717B2] uppercase">
                                 Your Mail Address
                             </label>
                             <input
                                 type="email"
                                 placeholder="abo@gmail.com"
-                                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                             />
                         </div>
 
-                        {/* Optional Message Field */}
                         <div className="space-y-2">
                             <div className="flex justify-between items-center">
-                                <label className="text-[13px] font-bold text-[#111111] uppercase tracking-wide">
+                                <label className="text-[13px] font-semibold font-(family-name:--font-geist-sans) text-[#171717B2] uppercase">
                                     Your question or message
                                 </label>
                                 <span className="text-[11px] text-gray-400 uppercase font-bold">Optional</span>
@@ -111,13 +111,13 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                             <input
                                 type="text"
                                 placeholder="Placeholder"
-                                className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                             />
                         </div>
 
-                        <div className="space-y-4 pt-2">
-                            <p className="text-[11px] text-gray-400 font-(family-name:--font-geist-sans)">
-                                This will be sent to our whatsapp and we will contact you back shortly
+                        <div className="space-y-3">
+                            <p className="text-[11px] text-[#17171799] font-(family-name:--font-geist-sans) text-center sm:text-left">
+                                Sent via WhatsApp; we'll contact you shortly.
                             </p>
 
                             <button
