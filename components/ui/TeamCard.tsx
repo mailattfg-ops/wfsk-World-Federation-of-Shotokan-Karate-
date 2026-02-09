@@ -9,7 +9,7 @@ interface TeamCardProps {
 
 export function TeamCard({ name, title, image, active = false }: TeamCardProps) {
     return (
-        <div className="relative aspect-3/4 w-full rounded-2xl overflow-hidden shadow-md transition-all duration-300 group hover:shadow-xl">
+        <div className="relative aspect-3/4 w-full rounded-md overflow-hidden shadow-md transition-all duration-300 group hover:shadow-xl">
             <Image
                 src={image}
                 alt={name}
@@ -23,7 +23,7 @@ export function TeamCard({ name, title, image, active = false }: TeamCardProps) 
             <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 bg-[#111111] rounded-md sm:rounded-xl p-1.5 sm:p-3 flex justify-between items-center z-10 shadow-lg">
                 <div className="flex flex-col gap-0.5">
                     <h3 className="text-white font-bold text-[11px] sm:text-base font-(family-name:--font-belanosima) tracking-wide leading-tight">{name}</h3>
-                    <p className="text-[6px] sm:text-[10px] text-gray-400 font-(family-name:--font-geist-sans) leading-tight">{title}</p>
+                    <p className="text-[6px] sm:text-[10px] text-[#B7B7B7] font-(family-name:--font-geist-sans) leading-tight">{title}</p>
                 </div>
                 <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${active ? 'bg-[#E81E26]' : 'bg-black border border-white/30'}`}>
                     {/* Indicator */}

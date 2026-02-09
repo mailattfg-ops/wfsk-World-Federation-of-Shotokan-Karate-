@@ -20,18 +20,18 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                     <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
 
                     {/* Content */}
-                    <div className="absolute bottom-0 left-0 w-full p-6 sm:p-10 lg:p-12 mb-2">
-                        <h2 className="text-[27px] sm:text-4xl lg:text-5xl font-bold text-white font-(family-name:--font-geist-sans) leading-tight mb-2 tracking-tight">
+                    <div className="absolute bottom-0 left-0 w-full p-6 sm:p-10 lg:p-12 mb-1">
+                        <h2 className="text-[27px] md:text-3xl lg:text-5xl font-bold text-white font-(family-name:--font-geist-sans) leading-tight mb-2 tracking-tight">
                             Join World <br />
                             Federation Karate
                         </h2>
-                        <p className="text-white/90 text-[14px] sm:text-base font-medium mb-6 leading-tight">
+                        <p className="text-white/90 text-[14px] sm:text-base font-medium mb-2 leading-tight">
                             Learn Karate and keep your health in check.
                         </p>
 
                         <Link
                             href="/register"
-                            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#E81E26] text-white w-[114px] h-[28px] sm:w-auto sm:h-auto px-3 py-2 sm:px-6 sm:py-4 rounded-md sm:rounded-lg font-extrabold text-[11px] sm:text-base tracking-wide hover:bg-[#B0171D] transition-all group"
+                            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#E81E26] text-white w-[114px] h-[28px] sm:w-auto sm:h-auto px-3 py-2 sm:px-6 sm:py-4  font-bold text-[11px] sm:text-base tracking-wide hover:bg-[#B0171D] transition-all group"
                         >
                             <span className="shrink-0">Book Now</span>
                             <svg
@@ -56,8 +56,8 @@ export function ContactUs({ className = "" }: ContactUsProps) {
 
                 {/* Right Side - Form */}
                 <div className="w-full md:w-1/2 p-6 sm:p-10 lg:p-16 flex flex-col justify-center">
-                    <div className="mb-6 sm:mb-8 text-center sm:text-left">
-                        <h2 className="text-2xl sm:text-4xl font-extrabold text-[#111111] font-(family-name:--font-geist-sans) mb-2 sm:mb-3">
+                    <div className="mb-6 sm:mb-8 text-left">
+                        <h2 className="text-2xl sm:text-4xl font-bold text-[#111111] font-(family-name:--font-geist-sans) mb-2 sm:mb-3">
                             Contact Us
                         </h2>
                         <p className="text-[#8F8F8F] font-medium font-(family-name:--font-geist-sans) text-xs sm:text-base">
@@ -67,7 +67,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                     </div>
 
                     <form className="space-y-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                        <div className="grid grid-cols-2 gap-4 lg:gap-6">
                             <div className="space-y-2">
                                 <label className="text-[13px] font-semibold font-(family-name:--font-geist-sans) text-[#171717B2] uppercase">
                                     Your Name
@@ -75,7 +75,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                 <input
                                     type="text"
                                     placeholder="Michael"
-                                    className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                    className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                 />
                             </div>
                             <div className="space-y-2">
@@ -85,7 +85,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                 <input
                                     type="text"
                                     placeholder="726929669526"
-                                    className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                    className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                 />
                             </div>
                         </div>
@@ -97,7 +97,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                             <input
                                 type="email"
                                 placeholder="abo@gmail.com"
-                                className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                             />
                         </div>
 
@@ -111,13 +111,13 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                             <input
                                 type="text"
                                 placeholder="Placeholder"
-                                className="w-full px-4 py-3 bg-white border-2 border-gray-100 rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                             />
                         </div>
 
                         <div className="space-y-3">
                             <p className="text-[11px] text-[#17171799] font-(family-name:--font-geist-sans) text-center sm:text-left">
-                                Sent via WhatsApp; we'll contact you shortly.
+                                This will be sent to our whatsapp and we will contact you back shortly
                             </p>
 
                             <button

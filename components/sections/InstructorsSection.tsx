@@ -20,7 +20,7 @@ export function InstructorsSection({ countryName, flagCode, instructors }: Instr
             <div className="w-full mx-auto space-y-4 md:space-y-8 lg:space-y-12">
 
                 {/* Header Card */}
-                <div className="bg-white rounded-lg p-8 sm:p-10 shadow-sm flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+                <div className="bg-white rounded-lg p-8 sm:p-10 shadow-sm flex flex-col sm:flex-row items-center justify-center gap-4">
 
                     {/* Flag */}
                     <div className="relative w-16 h-12 sm:w-24 sm:h-16 shrink-0 shadow-sm overflow-hidden rounded-md border border-gray-100">
@@ -30,10 +30,15 @@ export function InstructorsSection({ countryName, flagCode, instructors }: Instr
                             fill
                             className="object-cover"
                         />
+                        {/* Half Shadow Effect */}
+                        <div
+                            className="absolute inset-0 bg-black/10 pointer-events-none"
+                            style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
+                        />
                     </div>
 
                     {/* Vertical Divider (Hidden on mobile, visible on sm+) */}
-                    <div className="hidden sm:block w-[2px] h-16 bg-black/80"></div>
+                    <div className="hidden sm:block w-[2px] xl:w-[3px] h-16 xl:h-20 bg-black/80"></div>
 
                     {/* Text */}
                     <div className="text-center sm:text-left">

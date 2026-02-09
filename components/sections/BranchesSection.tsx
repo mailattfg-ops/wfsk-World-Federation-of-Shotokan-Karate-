@@ -51,29 +51,11 @@ export function BranchesSection() {
 
     return (
         <section className="w-full p-4">
-            <div className="w-full mx-auto space-y-4 sm:space-y-8">
-                {/* Header Card - Matching OurTeam/WhoWeAre design */}
-                <div className="bg-white rounded-lg p-4 sm:p-10 shadow-sm overflow-hidden">
-                    <div className="flex flex-col lg:flex-row items-center lg:items-center gap-0 md:gap-6 text-center lg:text-left">
-                        {/* Title Section */}
-                        <div className="w-full lg:w-1/4 flex flex-col lg:flex-row items-center justify-center lg:justify-end">
-                            <h2 className="text-2xl sm:text-5xl font-bold text-black font-(family-name:--font-belanosima) leading-tight w-full lg:w-auto text-center lg:text-right">
-                                Our <br /> Branches
-                            </h2>
-                            <div className="lg:hidden w-12 h-[1px] bg-black/10 mt-2 mb-4 mx-auto"></div>
-                        </div>
-
-                        {/* Desktop Vertical Line */}
-                        <div className="hidden lg:block w-px h-32 bg-black grow-0 shrink-0"></div>
-
-                        {/* Text Content */}
-                        <div className="w-full lg:w-3/4 max-w-2xl mx-auto lg:mx-0">
-                            <div className="text-[#7C7C7C] font-(family-name:--font-geist-sans) text-xs sm:text-[20px] leading-relaxed text-center lg:text-left">
-                                The World Federation of Shotokan Karate has branches in over 20 countries. Our instructors have decades of experience and are dedicated to teaching students the art of Shotokan Karate. Find a dojo near you!
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="w-full mx-auto space-y-4 xl:space-y-8">
+                {/* Header Card - Using standardized SectionHeader */}
+                <SectionHeader title={<>Our <br /> Branches</>}>
+                    The World Federation of Shotokan Karate has branches in over 20 countries. Our instructors have decades of experience and are dedicated to teaching students the art of Shotokan Karate. Find a dojo near you!
+                </SectionHeader>
 
                 {/* Filter Tabs - Centered and small on mobile to fit one line */}
                 <div className="flex flex-wrap gap-1 md:gap-2 justify-center lg:justify-start px-1 sm:px-0">
@@ -91,8 +73,8 @@ export function BranchesSection() {
                     ))}
                 </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+                {/* Grid - 2 columns starting on medium screens */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     {filteredBranches.map((branch, index) => (
                         <BranchCard
                             key={index}

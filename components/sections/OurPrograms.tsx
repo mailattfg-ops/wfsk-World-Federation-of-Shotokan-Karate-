@@ -37,27 +37,27 @@ export function OurPrograms() {
                     At the World Federation of Shotokan Karate, we offer a range of programs led by our highly qualified instructors, each with over 30 years of national and international experience. Our dedicated trainers, who are active members of the federation, provide expertly designed training camps tailored for schools, ensuring a well-rounded and respectful learning environment.
                 </SectionHeader>
 
-                {/* Programs Grid - 2 columns on tablet and desktop */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 sm:gap-6">
+                {/* Programs Grid - Single column on tablet, 2 columns on desktop */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-6">
                     {PROGRAMS.map((program, index) => (
                         <div key={index} className="bg-white overflow-hidden flex shadow-sm min-h-[280px] sm:min-h-[320px] md:min-h-[300px] lg:min-h-[400px]">
                             {/* Text Content (Left) */}
                             <div className="w-[55%] p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
                                 {/* Badges */}
-                                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 lg:mb-4">
+                                <div className="flex flex-nowrap gap-1 sm:gap-2 mb-2 lg:mb-4 overflow-hidden">
                                     {program.badges.map((badge, idx) => (
-                                        <span key={idx} className="bg-[#E6E6E6] text-[8px] sm:text-xs lg:text-sm font-semibold text-[#262626] px-2 lg:px-3 py-0.5 lg:py-1 rounded-md font-(family-name:--font-geist-sans)">
+                                        <span key={idx} className="bg-[#E6E6E6] text-[8px] sm:text-xs lg:text-sm font-semibold text-[#262626] px-2 lg:px-3 py-0.5 lg:py-1 rounded-md font-(family-name:--font-geist-sans) whitespace-nowrap">
                                             {badge}
                                         </span>
                                     ))}
                                 </div>
 
                                 <div>
-                                    <h3 className="text-[22px] sm:text-2xl lg:text-4xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight mb-1 lg:mb-3">
+                                    <h3 className="text-[22px] sm:text-2xl lg:text-4xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight mb-1">
                                         {program.title}
                                     </h3>
 
-                                    <p className="text-gray-500 text-[10px] sm:text-xs lg:text-sm leading-relaxed font-(family-name:--font-geist-sans) line-clamp-3 sm:line-clamp-none">
+                                    <p className="text-gray-500 text-[8px] sm:text-xs lg:text-sm font-(family-name:--font-geist-sans) line-clamp-3 sm:line-clamp-none">
                                         {program.description}
                                     </p>
                                 </div>

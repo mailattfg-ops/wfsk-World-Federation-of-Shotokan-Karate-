@@ -19,59 +19,66 @@ export function Header() {
 
     return (
         <>
-            <header className={`fixed top-4 sm:top-6 left-0 w-full px-2 sm:px-8 z-50 flex justify-between items-center pointer-events-none transition-all duration-300 ${scrolled ? "top-2 sm:top-4" : ""}`}>
-                {/* Mobile: Single Island / Desktop: Left Island */}
-                <div className="bg-[#111111]/90 backdrop-blur-md rounded-lg pl-2 sm:pl-3 pr-2 sm:pr-8 flex items-center shadow-2xl border border-white/5 pointer-events-auto h-[54px] sm:h-[60px] grow md:grow-0 overflow-hidden mx-1 sm:mx-0">
-                    <div className="flex items-center justify-between w-full gap-1">
-                        <Link href="/" className="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink">
-                            {/* Logo */}
-                            <div className="relative w-8 h-8 sm:w-14 sm:h-14 shrink-0">
-                                <Image
-                                    src="/images/logo.png"
-                                    alt="WFSK Logo"
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
+            <header className={`fixed top-4 sm:top-6 left-0 w-full px-2 sm:px-6 z-50 flex justify-between items-center pointer-events-none transition-all duration-300 ${scrolled ? "top-2 sm:top-4" : ""}`}>
+                {/* Mobile & Tablet: Single Merged Bar (lg:hidden) */}
+                <div className="lg:hidden bg-[#111111]/90 backdrop-blur-md rounded-lg px-2 sm:px-6 flex items-center justify-between shadow-2xl border border-white/5 pointer-events-auto h-[54px] sm:h-[60px] grow overflow-hidden">
+                    <Link href="/" className="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink">
+                        <div className="relative w-8 h-8 sm:w-14 sm:h-14 shrink-0">
+                            <Image src="/images/logo.png" alt="WFSK Logo" fill className="object-contain" />
+                        </div>
+                        <div className="flex flex-col items-stretch justify-center min-w-0 shrink">
+                            <span className="text-white text-[8.5px] sm:text-[13px] font-bold tracking-wide uppercase whitespace-nowrap overflow-hidden text-ellipsis leading-tight block">
+                                World Federation of Shotokan Karate
+                            </span>
+                            <JapaneseHeading text="世界 松 濤 館 空 手 連 盟" className="text-[6.5px] sm:text-[12px]" />
+                        </div>
+                    </Link>
 
-                            {/* Text Block */}
-                            <div className="flex flex-col items-start justify-center min-w-0 shrink">
-                                <span className="text-white text-[8.5px] sm:text-[13px] font-bold tracking-wide uppercase whitespace-nowrap overflow-hidden text-ellipsis leading-tight block">
-                                    World Federation of Shotokan Karate
-                                </span>
-                                <JapaneseHeading text="世界 松 濤 館 空 手 連 盟" className="text-[6.5px] sm:text-[12px]" />
-                            </div>
-                        </Link>
+                    <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="flex md:hidden text-white shrink-0 p-1.5"
+                        aria-label="Toggle Menu"
+                    >
+                        {isMenuOpen ? (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        ) : (
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        )}
+                    </button>
 
-                        {/* Mobile Toggle Button */}
-                        <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="flex md:hidden text-white shrink-0 p-1.5"
-                            aria-label="Toggle Menu"
-                        >
-                            {isMenuOpen ? (
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            ) : (
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                            )}
-                        </button>
-                    </div>
+                    {/* Tablet Navigation Links */}
+                    <nav className="hidden md:flex items-center gap-6 text-[14px] text-zinc-300 font-medium tracking-wide">
+                        <Link href="/branches" className="hover:text-white transition-colors whitespace-nowrap">Our Branches</Link>
+                        <Link href="/black-belts" className="hover:text-white transition-colors whitespace-nowrap">Black Belts</Link>
+                        <Link href="/team" className="hover:text-white transition-colors whitespace-nowrap">Our Team</Link>
+                    </nav>
                 </div>
 
-                {/* Desktop Right Island - Only visible on MD and up */}
-                <div className="hidden md:flex bg-[#111111]/90 backdrop-blur-md rounded-lg px-8 items-center shadow-2xl border border-white/5 pointer-events-auto h-[60px]">
-                    <nav className="flex items-center gap-8 text-[15px] text-zinc-300 font-medium tracking-wide">
-                        <Link href="/branches" className="hover:text-white transition-colors">
-                            Our Branches
+                {/* Desktop: Separate Islands (hidden lg:flex) */}
+                <div className="hidden lg:flex items-center justify-between w-full pointer-events-none">
+                    {/* Left Branding Island */}
+                    <div className="bg-[#111111]/90 backdrop-blur-md rounded-lg pl-3 pr-8 flex items-center shadow-2xl border border-white/5 pointer-events-auto h-[66px]">
+                        <Link href="/" className="flex items-center gap-4">
+                            <div className="relative w-16 h-16 shrink-0">
+                                <Image src="/images/logo.png" alt="WFSK Logo" fill className="object-contain" />
+                            </div>
+                            <div className="flex flex-col items-start justify-center">
+                                <span className="text-white text-[15px] font-bold tracking-wide uppercase leading-tight block">
+                                    World Federation of Shotokan Karate
+                                </span>
+                                <JapaneseHeading text="世界 松 濤 館 空 手 連 盟" className="text-[13px]" />
+                            </div>
                         </Link>
+                    </div>
 
-                        <Link href="/black-belts" className="hover:text-white transition-colors">
-                            Black Belts
-                        </Link>
-                        <Link href="/team" className="hover:text-white transition-colors">
-                            Our Team
-                        </Link>
-                    </nav>
+                    {/* Right Navigation Island */}
+                    <div className="bg-[#111111]/90 backdrop-blur-md rounded-lg px-8 flex items-center shadow-2xl border border-white/5 pointer-events-auto h-[66px]">
+                        <nav className="flex items-center gap-10 text-[15px] text-zinc-300 font-medium tracking-wide">
+                            <Link href="/branches" className="hover:text-white transition-colors">Our Branches</Link>
+                            <Link href="/black-belts" className="hover:text-white transition-colors">Black Belts</Link>
+                            <Link href="/team" className="hover:text-white transition-colors">Our Team</Link>
+                        </nav>
+                    </div>
                 </div>
             </header>
 
