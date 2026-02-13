@@ -25,8 +25,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "WFSK - World Federation of Shotokan Karate",
-  description: "Official website of the World Federation of Shotokan Karate",
+  title: {
+    default: "WFSK - World Federation of Shotokan Karate",
+    template: "%s | WFSK"
+  },
+  description: "Official website of the World Federation of Shotokan Karate. Promoting the art and sport of Shotokan Karate globally.",
+  keywords: ["Karate", "Shotokan", "WFSK", "Martial Arts", "World Federation", "Karate Federation"],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://wfsk.org",
+    title: "WFSK - World Federation of Shotokan Karate",
+    description: "Official website of the World Federation of Shotokan Karate",
+    siteName: "WFSK",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WFSK - World Federation of Shotokan Karate",
+    description: "Official website of the World Federation of Shotokan Karate",
+  },
 };
 
 export default function RootLayout({

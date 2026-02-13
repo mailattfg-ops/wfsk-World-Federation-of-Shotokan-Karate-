@@ -9,6 +9,20 @@ import { uploadToCloudinary } from '@/lib/cloudinary'
 
 export type MemberRole = 'director' | 'executive' | 'instructor' | 'black_belt';
 
+export interface Member {
+  id: string;
+  name: string;
+  position: string;
+  belt_dan?: string;
+  image_url: string;
+  role: MemberRole;
+  country?: string;
+  show_belt: boolean;
+  belt_color?: string;
+  display_order: number;
+  created_at?: string;
+}
+
 const MemberSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
     position: z.string().min(2, "Position must be at least 2 characters"),

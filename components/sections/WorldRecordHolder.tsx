@@ -21,10 +21,12 @@ export async function WorldRecordHolder() {
 
                 {/* Image Container - Full width on mobile/tablet, Padded on desktop */}
                 <div className="relative w-full aspect-4/3 sm:aspect-video lg:aspect-auto">
-                    <img
+                    <Image
                         src={content.image_url}
                         alt={content.title}
-                        className="w-full h-full object-cover block rounded-none lg:rounded-sm"
+                        fill
+                        className="object-cover block rounded-none lg:rounded-sm"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
 

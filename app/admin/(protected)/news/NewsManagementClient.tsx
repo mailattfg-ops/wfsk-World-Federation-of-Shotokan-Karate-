@@ -1,19 +1,19 @@
 'use client'
 
 import { useState } from 'react'
-import { deleteNewsEvent } from '@/lib/actions/news'
+import { deleteNewsEvent, type NewsEvent } from '@/lib/actions/news'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import NewsFormModal from '@/components/admin/NewsFormModal'
 import { DeleteButton } from '@/components/admin/DeleteButton'
 import { toast } from '@/components/ui/Toaster'
 
-export default function NewsManagementClient({ initialNews }: { initialNews: any[] }) {
+export default function NewsManagementClient({ initialNews }: { initialNews: NewsEvent[] }) {
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [editingNews, setEditingNews] = useState<any>(null)
+    const [editingNews, setEditingNews] = useState<NewsEvent | null>(null)
     const router = useRouter()
 
-    const handleEdit = (news: any) => {
+    const handleEdit = (news: NewsEvent) => {
         setEditingNews(news)
         setIsModalOpen(true)
     }

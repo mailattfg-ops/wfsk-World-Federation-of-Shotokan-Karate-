@@ -14,6 +14,17 @@ const NewsSchema = z.object({
     media_type: z.enum(['image', 'video']).default('image'),
 })
 
+export interface NewsEvent {
+  id: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  image_url?: string;
+  video_url?: string;
+  media_type: 'image' | 'video';
+  created_at?: string;
+}
+
 export async function getNewsEvents() {
     const supabase = await createClient()
     const { data, error } = await supabase

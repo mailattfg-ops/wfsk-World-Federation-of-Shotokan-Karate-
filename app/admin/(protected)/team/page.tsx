@@ -1,4 +1,4 @@
-import { getMembers, deleteMember, type MemberRole } from "@/lib/actions/members";
+import { getMembers, deleteMember, type MemberRole, type Member } from "@/lib/actions/members";
 import MemberFormModal from "@/components/admin/MemberFormModal";
 import { DeleteButton } from "@/components/admin/DeleteButton";
 import Link from 'next/link';
@@ -32,7 +32,7 @@ export default async function TeamManagementPage({
     const members = await getMembers(categoryInfo.role, categoryInfo.country);
 
     // Determine the editing member if in edit mode
-    const editingMember = editId ? members.find((m: any) => m.id === editId) : null;
+    const editingMember = editId ? members.find((m: Member) => m.id === editId) : null;
 
     return (
         <div className="flex flex-col h-full space-y-8 animate-in fade-in duration-700">
@@ -95,7 +95,7 @@ export default async function TeamManagementPage({
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50">
-                                {members.map((member: any) => (
+                                {members.map((member: Member) => (
                                     <tr key={member.id} className="group hover:bg-zinc-50/50 transition-colors">
                                         <td className="px-8 py-4 text-center">
                                             <div className="w-12 h-12 rounded-2xl bg-gray-100 ring-4 ring-white shadow-sm overflow-hidden mx-auto group-hover:scale-110 transition-transform duration-500">
