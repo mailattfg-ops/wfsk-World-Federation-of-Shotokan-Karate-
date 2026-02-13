@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { JapaneseHeading } from "./ui/JapaneseHeading";
+import { APP_NAME, JAPANESE_NAME } from "@/lib/constants";
 
 export function Footer() {
     return (
@@ -14,27 +15,31 @@ export function Footer() {
                     <div className="lg:hidden flex flex-col items-center md:items-start max-w-full">
                         <div className="flex flex-row items-center gap-0 w-full justify-center md:justify-start mt-1">
                             {/* Logo - Sized to 65x52px on mobile, 75x60px on sm */}
-                            <div className="relative w-[65px] h-[52px] sm:w-[75px] sm:h-[60px] shrink-0">
+                            <div className="relative shrink-0">
                                 <Image
                                     src="/images/logo.png"
                                     alt="WFSK Logo"
-                                    fill
+                                    width={80}
+                                    height={64}
                                     className="object-contain"
+                                    priority
                                 />
                             </div>
 
                             {/* Text Columns - Top English (13px), Bottom Japanese (14px) */}
                             <div className="flex flex-col items-start justify-center py-0.5 overflow-hidden">
-                                <h2 className="text-[13px] sm:text-[15px] md:text-[15px] lg:text-lg font-extrabold text-[#111111] font-(family-name:--font-geist-sans) leading-none tracking-tight text-left whitespace-nowrap">
-                                    WORLD FEDERATION OF SHOTOKAN KARATE
-                                </h2>
+                                <div className="w-fit">
+                                    <h2 className="text-[13px] sm:text-[15px] md:text-[15px] lg:text-lg font-extrabold text-[#111111] font-(family-name:--font-geist-sans) leading-none tracking-tight text-left whitespace-nowrap">
+                                        {APP_NAME.toUpperCase()}
+                                    </h2>
 
-                                <div className="flex items-center w-full mt-0.5 sm:mt-1">
-                                    <div className="h-px bg-[#FF0000] grow" />
-                                    <span className="text-[14px] sm:text-[16px] md:text-[10px] lg:text-[14px] text-[#FF0000] font-bold tracking-[0.15em] shrink-0 px-1 leading-none">
-                                        世 界 松 濤 館 空 手 連 盟
-                                    </span>
-                                    <div className="h-px bg-[#FF0000] grow" />
+                                    <div className="flex items-center w-full mt-0.5 sm:mt-1">
+                                        <div className="h-px bg-[#FF0000] grow" />
+                                        <span className="text-[14px] sm:text-[16px] md:text-[10px] lg:text-[14px] text-[#FF0000] font-bold tracking-[0.15em] shrink-0 px-1 leading-none">
+                                            {JAPANESE_NAME}
+                                        </span>
+                                        <div className="h-px bg-[#FF0000] grow" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -43,25 +48,26 @@ export function Footer() {
                     {/* DESKTOP BRANDING (Original Design Restored) */}
                     <div className="hidden lg:flex flex-col items-start w-full">
                         {/* Row for Logo and Text - Vertically Centered */}
-                        <div className="flex flex-row items-center gap-4 w-full">
-                            {/* Logo */}
-                            <div className="relative w-24 h-24 xl:w-[110px] xl:h-[110px]
- shrink-0">
+                        <div className="flex flex-row items-center w-full">
+                            {/* Logo - Sized down to prevent "big" look, added safety margin for "cutted" issue */}
+                            <div className="relative shrink-0">
                                 <Image
                                     src="/images/logo.png"
                                     alt="WFSK Logo"
-                                    fill
+                                    width={90}
+                                    height={90}
                                     className="object-contain"
+                                    priority
                                 />
                             </div>
 
-                            {/* Text Titles Block - Height matches text only, centered via parent items-center */}
-                            <div className="flex flex-col items-start max-w-md">
-                                <h1 className="text-lg xl:text-2xl font-bold text-black font-(family-name:--font-belanosima) leading-tight tracking-tight text-left whitespace-nowrap">
-                                    WORLD FEDERATION OF SHOTOKAN KARATE
+                            {/* Text Titles Block - Wrapped in w-fit to ensure JapaneseHeading matches English Title width */}
+                            <div className="flex flex-col items-start w-fit">
+                                <h1 className="text-lg xl:text-2xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight tracking-tight text-left whitespace-nowrap">
+                                    {APP_NAME.toUpperCase()}
                                 </h1>
                                 <JapaneseHeading
-                                    text="世 界 松 濤 館 空 手 連 盟"
+                                    text={JAPANESE_NAME}
                                     className="text-lg xl:text-2xl font-bold pb-px"
                                 />
                             </div>
@@ -111,8 +117,8 @@ export function Footer() {
                     <Link href="/packages" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
                         PACKAGES
                     </Link>
-                    <Link href="/blog" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
-                        BLOG
+                    <Link href="/news" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                        NEWS & EVENTS
                     </Link>
                     <Link href="/contact" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
                         CONTACT

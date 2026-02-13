@@ -1,39 +1,37 @@
 import { TeamCard } from "../ui/TeamCard";
+import { getMembers } from "@/lib/actions/members";
 
-const EXECUTIVE_MEMBERS = [
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: true },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: false },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: true },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: false },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: true },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: false },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: true },
-    { name: "Master John Doe", title: "Black Belt Dan 2 holder | Chief Instructor", image: "/images/who_we_are_image1.jpg", active: false },
-];
+export async function ExecutiveMembersSection() {
+    const members = await getMembers('executive');
 
-export function ExecutiveMembersSection() {
     return (
-        <section className="w-full">
+        <section className="w-full p-4">
             <div className="w-full mx-auto space-y-4 md:space-y-8 lg:space-y-12">
-                {/* Centered Header (Restored Desktop Look with Responsive scaling) */}
+                {/* Centered Header */}
                 <div className="bg-white rounded-lg p-8 sm:p-10 shadow-sm flex flex-col items-center justify-center text-center">
                     <h2 className="text-4xl sm:text-5xl font-bold text-black font-(family-name:--font-belanosima) leading-tight">
                         Executive <br className="hidden md:block" /> Members
                     </h2>
                 </div>
 
-                {/* Members Grid - Padding matched to Header Box for alignment */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6 px-1 sm:px-0">
-                    {EXECUTIVE_MEMBERS.map((member, index) => (
+                    {members.map((member: any) => (
                         <TeamCard
-                            key={index}
+                            key={member.id}
                             name={member.name}
-                            title={member.title}
-                            image={member.image}
-                            active={member.active}
+                            title={`${member.position}${member.show_belt && member.belt_dan ? ` | ${member.belt_dan}` : ''}`}
+                            image={member.image_url}
+                            showBelt={member.show_belt}
+                            beltColor={member.belt_color}
+                            active={true}
                         />
                     ))}
                 </div>
+                {members.length === 0 && (
+                    <div className="text-center py-20 text-zinc-400 font-bold uppercase tracking-widest text-xs border-2 border-dashed border-zinc-100 rounded-xl">
+                        No executive members found.
+                    </div>
+                )}
             </div>
         </section>
     );

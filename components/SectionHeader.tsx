@@ -9,7 +9,7 @@ export function SectionHeader({ title, children }: SectionHeaderProps) {
     return (
         <div className="bg-white rounded-lg p-6 sm:p-10 shadow-sm flex flex-col md:flex-row items-center md:items-center gap-2 sm:gap-6 text-center md:text-left">
             <div className="w-full md:w-1/4 flex justify-center md:justify-end">
-                <h2 className="text-2xl sm:text-5xl font-bold text-black font-(family-name:--font-belanosima) leading-tight whitespace-nowrap sm:whitespace-normal">
+                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-black font-(family-name:--font-belanosima) leading-tight whitespace-nowrap sm:whitespace-normal">
                     {title}
                 </h2>
             </div>

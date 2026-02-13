@@ -5,9 +5,11 @@ interface TeamCardProps {
     title: string;
     image: string;
     active?: boolean;
+    beltColor?: string;
+    showBelt?: boolean;
 }
 
-export function TeamCard({ name, title, image, active = false }: TeamCardProps) {
+export function TeamCard({ name, title, image, active = false, beltColor, showBelt = true }: TeamCardProps) {
     return (
         <div className="relative aspect-3/4 w-full rounded-md overflow-hidden shadow-md transition-all duration-300 group hover:shadow-xl">
             <Image
@@ -25,7 +27,10 @@ export function TeamCard({ name, title, image, active = false }: TeamCardProps) 
                     <h3 className="text-white font-bold text-[11px] sm:text-base font-(family-name:--font-belanosima) tracking-wide leading-tight">{name}</h3>
                     <p className="text-[6px] sm:text-[10px] text-[#B7B7B7] font-(family-name:--font-geist-sans) leading-tight">{title}</p>
                 </div>
-                <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${active ? 'bg-[#E81E26]' : 'bg-black border border-white/30'}`}>
+                <div
+                    className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-500 border-2 border-white shadow-inner ${!showBelt ? 'hidden' : ''} ${beltColor ? '' : 'bg-[#E81E26]'}`}
+                    style={beltColor ? { backgroundColor: beltColor, boxShadow: `0 0 20px ${beltColor}44` } : {}}
+                >
                     {/* Indicator */}
                 </div>
             </div>

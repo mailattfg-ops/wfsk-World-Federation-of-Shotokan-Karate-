@@ -1,22 +1,17 @@
 import Image from "next/image";
 import { TeamCard } from "../ui/TeamCard";
-
-interface Instructor {
-    name: string;
-    title: string;
-    image: string;
-    active: boolean;
-}
+import { getMembers } from "@/lib/actions/members";
 
 interface InstructorsSectionProps {
     countryName: string;
     flagCode: string; // ISO code for flagcdn (e.g., 'ae', 'in')
-    instructors: Instructor[];
 }
 
-export function InstructorsSection({ countryName, flagCode, instructors }: InstructorsSectionProps) {
+export async function InstructorsSection({ countryName, flagCode }: InstructorsSectionProps) {
+    const instructors = await getMembers('instructor', countryName);
+
     return (
-        <section className="w-full">
+        <section className="w-full p-4">
             <div className="w-full mx-auto space-y-4 md:space-y-8 lg:space-y-12">
 
                 {/* Header Card */}
@@ -48,18 +43,24 @@ export function InstructorsSection({ countryName, flagCode, instructors }: Instr
                     </div>
                 </div>
 
-                {/* Team Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6 px-1 sm:px-0">
-                    {instructors.map((member, index) => (
+                    {instructors.map((member: any) => (
                         <TeamCard
-                            key={index}
+                            key={member.id}
                             name={member.name}
-                            title={member.title}
-                            image={member.image}
-                            active={member.active}
+                            title={`${member.position}${member.show_belt && member.belt_dan ? ` | ${member.belt_dan}` : ''}`}
+                            image={member.image_url}
+                            showBelt={member.show_belt}
+                            beltColor={member.belt_color}
+                            active={true}
                         />
                     ))}
                 </div>
+                {instructors.length === 0 && (
+                    <div className="text-center py-20 text-zinc-400 font-bold uppercase tracking-widest text-xs border-2 border-dashed border-zinc-100 rounded-xl">
+                        No instructors found for {countryName}.
+                    </div>
+                )}
             </div>
         </section>
     );

@@ -5,7 +5,7 @@ import { ContactUs } from "@/components/sections/ContactUs";
 
 export default function BlackBeltsPage() {
     return (
-        <div className="min-h-screen bg-[#F5F5F5] font-(family-name:--font-geist-sans)">
+        <div className="min-h-screen bg-[#F5F5F5]">
             <Header />
 
             <main className="pt-24 md:pt-32 w-full mx-auto bg-[#E5E5E5]">

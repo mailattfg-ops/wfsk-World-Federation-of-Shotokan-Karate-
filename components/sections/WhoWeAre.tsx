@@ -25,10 +25,13 @@ export function WhoWeAre() {
                         {/* Right: Header Content (Logo, Text, Badges) */}
                         <div className="flex-grow pl-0 pt-1 lg:pt-0">
                             {/* Removed w-full from mx-auto wrapper to allow true centering on mobile */}
-                            <div className="flex flex-row items-center lg:items-center justify-center lg:justify-start w-full max-w-2xl mx-auto lg:mx-0 gap-0">
+                            <div className="flex flex-row items-center lg:items-center justify-center lg:justify-start w-full max-w-2xl mx-auto lg:mx-0">
                                 {/* Logo - Circular and sized for mobile row - Reduced for better fit */}
-                                <div className="w-[60px] h-auto sm:w-[160px] sm:h-[160px] lg:w-[200px] lg:h-[200px] relative shrink-0 aspect-square">
-                                    <Image src="/images/logo.png" alt="WFSK Logo" fill className="object-contain" />
+                                <div className=" relative shrink-0 aspect-square">
+                                    <Image src="/images/logo.png" alt="WFSK Logo" className="object-contain w-[60px] h-auto md:w-[160px] md:h-[160px] xl:w-[200px] xl:h-[200px]" width={160}
+                                        height={160}
+
+                                    />
                                 </div>
 
                                 {/* Text Content - w-fit and items-stretch to make all children same width (widest element defines width) */}
