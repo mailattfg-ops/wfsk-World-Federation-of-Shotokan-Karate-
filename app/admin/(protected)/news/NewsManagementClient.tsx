@@ -1,27 +1,14 @@
 'use client'
 
-import { useState } from 'react'
 import { deleteNewsEvent, type NewsEvent } from '@/lib/actions/news'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import NewsFormModal from '@/components/admin/NewsFormModal'
+import Link from 'next/link'
 import { DeleteButton } from '@/components/admin/DeleteButton'
 import { toast } from '@/components/ui/Toaster'
 
 export default function NewsManagementClient({ initialNews }: { initialNews: NewsEvent[] }) {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [editingNews, setEditingNews] = useState<NewsEvent | null>(null)
     const router = useRouter()
-
-    const handleEdit = (news: NewsEvent) => {
-        setEditingNews(news)
-        setIsModalOpen(true)
-    }
-
-    const handleAdd = () => {
-        setEditingNews(null)
-        setIsModalOpen(true)
-    }
 
     const handleDelete = async (id: string) => {
         const result = await deleteNewsEvent(id)
@@ -35,25 +22,6 @@ export default function NewsManagementClient({ initialNews }: { initialNews: New
 
     return (
         <div className="space-y-6">
-            <div className="bg-white rounded-3xl p-4 shadow-sm border border-zinc-100 flex items-center justify-between">
-                <div className="flex items-center gap-4 pl-2">
-                    <div className="w-10 h-10 bg-red-50 rounded-2xl flex items-center justify-center text-red-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path><path d="M18 14h-8"></path><path d="M15 18h-5"></path><path d="M10 6h8v4h-8V6Z"></path></svg>
-                    </div>
-                    <div>
-                        <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Active Feed</p>
-                        <p className="text-sm font-black text-zinc-900 uppercase tracking-tight">{initialNews.length} Published Articles</p>
-                    </div>
-                </div>
-                <button
-                    onClick={handleAdd}
-                    className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-red-600/20 active:scale-95 flex items-center gap-2"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    Add Article
-                </button>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {initialNews.map((news) => (
                     <div key={news.id} className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-zinc-100 hover:shadow-xl hover:border-red-100 transition-all duration-300">
@@ -87,13 +55,13 @@ export default function NewsManagementClient({ initialNews }: { initialNews: New
                             </p>
 
                             <div className="flex items-center gap-3">
-                                <button
-                                    onClick={() => handleEdit(news)}
+                                <Link
+                                    href={`?edit=${news.id}&showModal=true`}
                                     className="flex-1 py-3 bg-zinc-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-all flex items-center justify-center gap-2"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path><path d="m15 5 4 4"></path></svg>
                                     Edit
-                                </button>
+                                </Link>
                                 <DeleteButton
                                     onDelete={() => handleDelete(news.id)}
                                     title={news.title}
@@ -110,21 +78,15 @@ export default function NewsManagementClient({ initialNews }: { initialNews: New
                         </div>
                         <h3 className="text-lg font-black text-zinc-900 uppercase tracking-tight">No articles found</h3>
                         <p className="text-zinc-500 text-sm max-w-xs mt-2">Start by adding your first news article or tournament update.</p>
-                        <button
-                            onClick={handleAdd}
-                            className="mt-6 px-8 py-3 bg-red-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-red-700 shadow-xl shadow-red-600/20"
+                        <Link
+                            href="?showModal=true"
+                            className="mt-6 px-8 py-3 bg-red-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-red-700 shadow-xl shadow-red-600/20 inline-block"
                         >
                             Create First Article
-                        </button>
+                        </Link>
                     </div>
                 )}
             </div>
-
-            <NewsFormModal
-                isOpen={isModalOpen}
-                news={editingNews}
-                onClose={() => setIsModalOpen(false)}
-            />
         </div>
     )
 }

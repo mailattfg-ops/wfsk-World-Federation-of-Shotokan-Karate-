@@ -44,14 +44,11 @@ export default function BranchFormModal({ isOpen, onClose, editingBranch }: Bran
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
             <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#111111] rounded-3xl shadow-2xl border border-white/10 transition-all duration-300 scale-in-center no-scrollbar">
-                <header className="px-8 py-6 border-b border-white/10 flex items-center justify-between">
+                <header className="px-5 py-5 md:px-8 md:py-6 border-b border-white/10 flex items-center justify-between">
                     <div>
-                        <span className="px-2 py-0.5 bg-white text-black text-[8px] font-black uppercase tracking-widest rounded mb-2 inline-block">
-                            {editingBranch ? 'Update Resource' : 'System Registry'}
-                        </span>
-                        <h2 className="text-xl font-black text-white uppercase tracking-tighter">
+                        <h2 className="text-lg md:text-xl font-black text-white uppercase tracking-tighter">
                             {editingBranch ? 'Edit Branch' : 'Register New Branch'}
                         </h2>
                     </div>
@@ -60,55 +57,55 @@ export default function BranchFormModal({ isOpen, onClose, editingBranch }: Bran
                     </button>
                 </header>
 
-                <form action={handleSubmit} className="p-8 space-y-6">
+                <form action={handleSubmit} className="p-5 md:p-8 space-y-4 md:space-y-6">
                     <input type="hidden" name="image_url" value={editingBranch?.image_url || "https://res.cloudinary.com/placeholder"} />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4 lg:gap-y-8">
                         {/* Col 1: Text Fields */}
-                        <div className="space-y-6">
+                        <div className="space-y-4 md:space-y-6">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Country Location</label>
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Country Location</label>
                                     <input
                                         name="country_name"
                                         required
                                         defaultValue={editingBranch?.country_name || "UAE"}
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                         placeholder="Enter country"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Branch Place</label>
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Branch Place</label>
                                     <input
                                         name="place_name"
                                         required
                                         defaultValue={editingBranch?.place_name}
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                         placeholder="Enter location"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Head Instructor</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Head Instructor</label>
                                 <input
                                     name="instructor_name"
                                     required
                                     defaultValue={editingBranch?.instructor_name}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                     placeholder="Enter name"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Branch Description</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Branch Description</label>
                                 <textarea
                                     name="description"
                                     required
                                     defaultValue={editingBranch?.description}
                                     rows={4}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10 resize-none min-h-[140px]"
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10 resize-none min-h-[140px]"
                                     placeholder="Branch background details..."
                                 />
                             </div>
@@ -130,14 +127,14 @@ export default function BranchFormModal({ isOpen, onClose, editingBranch }: Bran
                         <button
                             type="button"
                             onClick={handleClose}
-                            className="w-1/3 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
+                            className="w-1/3 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isPending}
-                            className={`flex-1 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3 bg-red-600 text-white hover:bg-red-700`}
+                            className={`flex-1 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3 bg-red-600 text-white hover:bg-red-700`}
                         >
                             {isPending ? (
                                 <>

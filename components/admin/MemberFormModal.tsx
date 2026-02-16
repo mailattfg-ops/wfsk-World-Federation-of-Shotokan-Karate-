@@ -58,14 +58,14 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
             <div className={`w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl border transition-all duration-500 scale-in-center no-scrollbar bg-[#111111] border-white/10`}>
-                <header className={`px-8 py-6 border-b flex items-center justify-between border-white/20`}>
+                <header className={`px-5 py-5 md:px-8 md:py-6 border-b flex items-center justify-between border-white/20`}>
                     <div>
-                        <span className={`px-2 py-0.5 text-[8px] font-black uppercase tracking-widest rounded mb-2 inline-block bg-white text-red-600`}>
+                        {/* <span className={`px-2 py-0.5 text-[7px] md:text-[8px] font-black uppercase tracking-widest rounded mb-2 inline-block bg-white text-red-600`}>
                             {editingMember ? 'Update Resource' : 'System Registry'}
-                        </span>
-                        <h2 className="text-xl font-black text-white uppercase tracking-tighter">
+                        </span> */}
+                        <h2 className="text-lg md:text-xl font-black text-white uppercase tracking-tighter">
                             {editingMember ? 'Edit Member' : 'Register New Member'}
                         </h2>
                     </div>
@@ -74,49 +74,49 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                     </button>
                 </header>
 
-                <form action={handleSubmit} className="p-8 space-y-6">
+                <form action={handleSubmit} className="p-5 md:p-8 space-y-6">
                     <input type="hidden" name="role" value={role} />
                     {country && <input type="hidden" name="country" value={country} />}
                     <input type="hidden" name="image_url" value={editingMember?.image_url || "https://res.cloudinary.com/placeholder"} />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                         {/* Col 1: Identity Info & Visibility */}
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Full Identity Name</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Full Identity Name</label>
                                 <input
                                     name="name"
                                     required
                                     defaultValue={editingMember?.name}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                     placeholder="Enter full name"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Official Position</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Official Position</label>
                                 <input
                                     name="position"
                                     required
                                     defaultValue={editingMember?.position}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                     placeholder="e.g. Chief Instructor"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Rank / Belt</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Rank / Belt</label>
                                 <input
                                     name="belt_dan"
                                     disabled={!showRankBelt}
                                     defaultValue={editingMember?.belt_dan}
-                                    className={`w-full px-5 py-4 bg-white/5 border rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10 ${!showRankBelt ? 'opacity-30 border-white/5 cursor-not-allowed' : 'border-white/10'}`}
+                                    className={`w-full px-5 py-4 bg-white/5 border rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10 ${!showRankBelt ? 'opacity-30 border-white/5 cursor-not-allowed' : 'border-white/10'}`}
                                     placeholder={showRankBelt ? "e.g. Black Belt Dan 2 holder" : "Rank Disabled"}
                                 />
                             </div>
 
                             <div className="flex flex-col">
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Identity Visibility</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Identity Visibility</label>
                                 <div className="flex-1 flex items-center px-4 py-4 bg-white/5 border border-white/10 rounded-2xl gap-2">
                                     <input
                                         type="checkbox"
@@ -127,7 +127,7 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                                         value="true"
                                         className="w-4 h-4 accent-red-500"
                                     />
-                                    <label htmlFor="modal_show_belt" className="text-[10px] font-black text-white/60 uppercase tracking-widest cursor-pointer select-none">Show Rank/Belt</label>
+                                    <label htmlFor="modal_show_belt" className="text-[9px] md:text-[10px] font-black text-white/60 uppercase tracking-widest cursor-pointer select-none">Show Rank/Belt</label>
                                 </div>
                             </div>
                         </div>
@@ -147,8 +147,8 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                         <div className="space-y-4">
                             <div className={`space-y-4 transition-all duration-300 ${showRankBelt ? 'opacity-100' : 'opacity-30 pointer-events-none grayscale'}`}>
                                 <div className="animate-in slide-in-from-top-2 duration-300">
-                                    <label className="block text-[10px] font-black uppercase text-white/40 mb-4 tracking-widest">Official Belt Color</label>
-                                    <div className="grid grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-4 tracking-widest">Official Belt Color</label>
+                                    <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                                         {[
                                             { name: 'White', color: '#FFFFFF' },
                                             { name: 'Yellow', color: '#FACC15' },
@@ -191,14 +191,14 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                         <button
                             type="button"
                             onClick={handleClose}
-                            className={`w-1/3 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20`}
+                            className={`w-1/3 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20`}
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isPending}
-                            className={`flex-1 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3 bg-red-600 text-white hover:bg-red-700`}
+                            className={`flex-1 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3 bg-red-600 text-white hover:bg-red-700`}
                         >
                             {isPending ? (
                                 <>

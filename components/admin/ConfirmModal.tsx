@@ -25,7 +25,7 @@ export function ConfirmModal({
 
     return (
         <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="w-full max-w-md bg-[#111111] border border-white/10 rounded-3xl shadow-2xl p-8 animate-in zoom-in-95 duration-200">
+            <div className="w-full max-w-md max-h-[90vh] overflow-y-auto bg-[#111111] border border-white/10 rounded-3xl shadow-2xl p-6 md:p-8 no-scrollbar animate-in zoom-in-95 duration-200">
                 <div className="flex flex-col items-center text-center space-y-4">
                     {/* Icon Header */}
                     <div className={`w-16 h-16 rounded-full flex items-center justify-center ${isDestructive ? 'bg-red-600/10 text-red-600' : 'bg-white/10 text-white'}`}>
@@ -37,26 +37,25 @@ export function ConfirmModal({
                     </div>
 
                     <div className="space-y-2">
-                        <h3 className="text-xl font-black text-white uppercase tracking-tighter">{title}</h3>
-                        <p className="text-zinc-400 text-xs font-medium leading-relaxed uppercase tracking-widest">{message}</p>
-                    </div>
-
-                    <div className="flex gap-3 w-full pt-4">
-                        <button
-                            onClick={onClose}
-                            className="flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white/40 hover:text-white hover:bg-white/5 transition-all"
-                        >
-                            {cancelText}
-                        </button>
-                        <button
-                            onClick={() => {
-                                onConfirm();
-                                onClose();
-                            }}
-                            className={`flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl active:scale-95 transition-all ${isDestructive ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white text-black hover:bg-zinc-200'}`}
-                        >
-                            {confirmText}
-                        </button>
+                        <h3 className="text-lg md:text-xl font-black text-white uppercase tracking-tighter mb-2">{title}</h3>
+                        <p className="text-xs md:text-sm text-white/60 mb-6 leading-relaxed">{message}</p>
+                        <div className="flex gap-4">
+                            <button
+                                onClick={onClose}
+                                className="w-1/3 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
+                            >
+                                {cancelText}
+                            </button>
+                            <button
+                                onClick={onConfirm}
+                                className={`flex-1 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 flex items-center justify-center gap-2 ${isDestructive
+                                    ? 'bg-red-600 text-white hover:bg-red-700'
+                                    : 'bg-white text-black hover:bg-white/90'
+                                    }`}
+                            >
+                                {confirmText}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -23,15 +23,15 @@ export default async function AdminDashboard() {
         <div className="space-y-8">
             <div className="bg-[#111111] rounded-2xl p-6 lg:p-8 text-white shadow-xl relative overflow-hidden">
                 <div className="relative z-10">
-                    <h1 className="text-2xl lg:text-3xl font-bold mb-2 tracking-tight uppercase leading-tight">Admin Dashboard</h1>
-                    <p className="text-zinc-400 text-sm lg:text-base max-w-lg">Welcome back. Here is a real-time overview of the World Federation of Shotokan Karate data.</p>
+                    <h1 className="text-xl lg:text-3xl font-bold mb-2 tracking-tight uppercase leading-tight">Admin Dashboard</h1>
+                    <p className="text-zinc-400 text-xs lg:text-base max-w-lg">Welcome back. Here is a real-time overview of the World Federation of Shotokan Karate data.</p>
                 </div>
                 {/* Decorative element */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full -translate-y-32 translate-x-32 blur-3xl"></div>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {stats.map((stat, i) => (
                     <div key={i} className="bg-white p-5 lg:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                         <div className={`w-8 h-8 lg:w-10 lg:h-10 ${stat.color} rounded-lg mb-3 lg:mb-4 flex items-center justify-center text-white font-black italic text-xs lg:text-base`}>
@@ -45,7 +45,7 @@ export default async function AdminDashboard() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Visual Section / Shortcut Card */}
-                <div className="lg:col-span-2 space-y-6">
+                <div className="hidden lg:col-span-2 space-y-6">
                     <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6 sm:gap-10">
                         <div className="flex-1 order-2 md:order-1">
                             <div className="mb-4 sm:mb-6">

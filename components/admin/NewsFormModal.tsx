@@ -20,6 +20,10 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
     if (!isOpen) return null;
 
     async function handleClose() {
+        const params = new URLSearchParams(window.location.search);
+        params.delete('showModal');
+        params.delete('edit');
+        router.push(`?${params.toString()}`);
         if (onClose) onClose();
     }
 
@@ -47,14 +51,11 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className={`w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl border transition-all duration-300 scale-in-center no-scrollbar bg-[#111111] border-white/10`}>
-                <header className="px-8 py-6 border-b border-white/10 flex items-center justify-between">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className={`w-full max-w-4xl max-h-[85vh] overflow-y-auto rounded-3xl shadow-2xl border transition-all duration-300 scale-in-center no-scrollbar bg-[#111111] border-white/10`}>
+                <header className="px-5 py-5 md:px-8 md:py-6 border-b border-white/10 flex items-center justify-between">
                     <div>
-                        <span className="px-2 py-0.5 bg-red-600 text-white text-[8px] font-black uppercase tracking-widest rounded mb-2 inline-block">
-                            News & Events
-                        </span>
-                        <h2 className="text-xl font-black text-white uppercase tracking-tighter">
+                        <h2 className="text-lg md:text-xl font-black text-white uppercase tracking-tighter">
                             {news ? 'Edit Article' : 'Compose News Article'}
                         </h2>
                     </div>
@@ -63,32 +64,32 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
                     </button>
                 </header>
 
-                <form action={handleSubmit} className="p-8 space-y-6">
+                <form action={handleSubmit} className="p-5 md:p-8 space-y-6">
                     <input type="hidden" name="image_url" value={news?.image_url || ''} />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                         {/* Col 1: Content Details */}
                         <div className="space-y-6">
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Main Headline</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Main Headline</label>
                                 <input
                                     name="title"
                                     defaultValue={news?.title}
                                     placeholder="e.g. Largest Karate Performance"
                                     required
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                 />
                             </div>
 
                             <div className="flex flex-col">
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest text">Article Body</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest text">Article Body</label>
                                 <textarea
                                     name="description"
                                     defaultValue={news?.description}
                                     placeholder="Write the full event description here..."
                                     required
                                     rows={8}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10 resize-none min-h-[220px]"
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10 resize-none min-h-[220px]"
                                 />
                             </div>
                         </div>
@@ -97,19 +98,19 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
                         <div className="space-y-6">
                             {/* Media Tab Switcher */}
                             <div>
-                                <label className="block text-[10px] font-black uppercase text-white/40 mb-3 tracking-widest text-center">Select Media Type</label>
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-3 tracking-widest text-center">Select Media Type</label>
                                 <div className="flex p-1 bg-white/5 border border-white/10 rounded-2xl">
                                     <button
                                         type="button"
                                         onClick={() => setMediaType('image')}
-                                        className={`flex-1 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${mediaType === 'image' ? 'bg-red-600 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+                                        className={`flex-1 py-3 rounded-xl text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all ${mediaType === 'image' ? 'bg-red-600 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
                                     >
                                         Image
                                     </button>
                                     <button
                                         type="button"
                                         onClick={() => setMediaType('video')}
-                                        className={`flex-1 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${mediaType === 'video' ? 'bg-red-600 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
+                                        className={`flex-1 py-3 rounded-xl text-[9px] md:text-[10px] font-bold uppercase tracking-widest transition-all ${mediaType === 'video' ? 'bg-red-600 text-white shadow-lg' : 'text-white/40 hover:text-white/60'}`}
                                     >
                                         Video
                                     </button>
@@ -129,14 +130,14 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
                                     </div>
                                 ) : (
                                     <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
-                                        <label className="block text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">YouTube Video Link</label>
+                                        <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">YouTube Video Link</label>
                                         <div className="relative">
                                             <input
                                                 name="video_url"
                                                 defaultValue={news?.video_url}
                                                 placeholder="https://youtube.com/watch?v=..."
                                                 required={mediaType === 'video'}
-                                                className="w-full pl-12 pr-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                                className="w-full pl-12 pr-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                             />
                                             <div className="absolute left-4 top-1/2 -translate-y-1/2 text-red-500">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
@@ -154,14 +155,14 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
                         <button
                             type="button"
                             onClick={handleClose}
-                            className="w-1/4 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
+                            className="w-1/4 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isPending}
-                            className="flex-1 py-3 bg-red-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:bg-red-700 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
+                            className="flex-1 py-3 bg-red-600 text-white rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:bg-red-700 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
                         >
                             {isPending ? (
                                 <>

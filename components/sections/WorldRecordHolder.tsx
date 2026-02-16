@@ -20,7 +20,7 @@ export async function WorldRecordHolder() {
             <div className="flex flex-col lg:block relative bg-[#E5E5E5] lg:p-2 lg:bg-white">
 
                 {/* Image Container - Full width on mobile/tablet, Padded on desktop */}
-                <div className="relative w-full aspect-4/3 sm:aspect-video lg:aspect-auto">
+                <div className="relative w-full aspect-4/3 sm:aspect-video lg:h-[650px]">
                     <Image
                         src={content.image_url}
                         alt={content.title}

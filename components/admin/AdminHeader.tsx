@@ -9,13 +9,13 @@ interface AdminHeaderProps {
 export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
     return (
         <header className="bg-white shadow-sm h-16 flex items-center justify-between px-6 lg:px-8 border-b border-gray-100 lg:hidden">
-            <div className="flex items-center gap-3">
-                <div className="relative w-8 h-8">
+            <div className="flex items-center">
+                <div className="relative w-12 h-12">
                     <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
                 </div>
                 <div className="flex flex-col">
-                    <span className="font-black text-[10px] uppercase tracking-tighter leading-none">Admin Control</span>
-                    <span className="text-[8px] font-bold text-red-600 uppercase tracking-widest">Federation HQ</span>
+                    <span className="font-black text-[10px] uppercase tracking-tighter leading-none">WFSK</span>
+                    <span className="text-[8px] font-bold text-red-600 uppercase tracking-widest">Admin Portal</span>
                 </div>
             </div>
 

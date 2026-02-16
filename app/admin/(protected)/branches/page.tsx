@@ -2,6 +2,13 @@ import { getBranches, deleteBranch } from "@/lib/actions/branches";
 import BranchFormModal from "@/components/admin/BranchFormModal";
 import { DeleteButton } from "@/components/admin/DeleteButton";
 import Link from 'next/link';
+import { CategoryDropdown } from "@/components/admin/CategoryDropdown";
+
+const BRANCH_CATEGORIES: Record<string, { title: string }> = {
+    All: { title: "All Locations" },
+    UAE: { title: "UAE Branches" },
+    India: { title: "India Branches" }
+};
 
 export default async function BranchesManagementPage({
     searchParams,
@@ -26,20 +33,19 @@ export default async function BranchesManagementPage({
     const countries = ["All", "UAE", "India"];
 
     return (
-        <div className="flex flex-col h-full space-y-8 animate-in fade-in duration-700 pb-10">
+        <div className="flex flex-col h-full space-y-6 lg:space-y-8 animate-in fade-in duration-700 pb-10">
             {/* Header with Title and Global Action */}
-            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-100 pb-8">
+            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-100 pb-0 lg:pb-8">
                 <div>
-                    <h1 className="text-4xl font-black text-[#111111] uppercase tracking-tighter leading-none mb-2">Branch Management</h1>
+                    <h1 className="text-xl lg:text-3xl font-black text-[#111111] uppercase tracking-tighter leading-none mb-2">Branch Management</h1>
                     <div className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                        <p className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.2em]">Global Network / Location Control</p>
+                        <p className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.2em]">Manage your global branches</p>
                     </div>
                 </div>
 
                 <Link
                     href={`?category=${currentCountry}&showModal=true`}
-                    className="group relative inline-flex items-center gap-4 bg-[#111111] text-white px-8 py-4 rounded-2xl overflow-hidden shadow-2xl hover:bg-black transition-all active:scale-95 transform"
+                    className="hidden md:inline-flex group relative items-center gap-4 bg-[#111111] text-white px-8 py-4 rounded-2xl overflow-hidden shadow-2xl hover:bg-black transition-all active:scale-95 transform"
                 >
                     <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em]">Register New Branch</span>
                     <div className="relative z-10 w-6 h-6 rounded-full bg-red-600 flex items-center justify-center group-hover:rotate-90 transition-transform duration-500">
@@ -48,8 +54,21 @@ export default async function BranchesManagementPage({
                 </Link>
             </header>
 
-            {/* Horizontal Country Navigation */}
-            <nav className="flex items-center gap-4 overflow-x-auto py-6 -my-2 no-scrollbar">
+            {/* Mobile Controls: Dropdown + Compact Add Button */}
+            <div className="flex items-stretch gap-3 md:hidden">
+                <div className="flex-1 min-w-0">
+                    <CategoryDropdown categories={BRANCH_CATEGORIES} currentCategory={currentCountry} />
+                </div>
+                <Link
+                    href={`?category=${currentCountry}&showModal=true`}
+                    className="flex-none flex items-center justify-center w-14 h-auto bg-[#111111] text-white rounded-2xl shadow-xl hover:bg-black transition-all active:scale-95"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </Link>
+            </div>
+
+            {/* Desktop Horizontal Country Navigation (Hidden on Mobile) */}
+            <nav className="hidden md:flex items-center gap-4 overflow-x-auto py-6 -my-2 no-scrollbar">
                 <div className="flex items-center gap-3 px-2">
                     {countries.map((country) => (
                         <Link

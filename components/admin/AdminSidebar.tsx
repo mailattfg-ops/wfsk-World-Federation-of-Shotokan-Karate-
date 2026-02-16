@@ -33,17 +33,17 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
 
             {/* Sidebar Container */}
             <aside className={`fixed lg:static inset-y-0 left-0 w-64 bg-[#111111] text-white z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'} flex flex-col`}>
-                <div className="p-6 border-b border-white/10 flex items-center justify-between">
+                <div className="p-4 border-b border-white/10 flex items-center justify-between">
                     <div>
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex items-center mb-2 gap-1">
                             <div className="relative w-8 h-8">
                                 <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
                             </div>
-                            <span className="font-bold text-sm tracking-tight uppercase">Dashboard</span>
+                            <span className="font-bold text-sm tracking-tight uppercase">WFSK</span>
                         </div>
-                        <p className="text-[10px] text-zinc-400 uppercase tracking-widest leading-none">
+                        {/* <p className="text-[10px] text-zinc-400 uppercase tracking-widest leading-none">
                             {APP_NAME}
-                        </p>
+                        </p> */}
                     </div>
                     {/* Close button for mobile */}
                     <button onClick={onClose} className="lg:hidden text-white/40 hover:text-white p-2">
@@ -76,7 +76,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                 <div className="p-4 border-t border-white/10">
                     <form action="/admin/logout" method="post">
                         <button className="w-full px-4 py-3 text-left hover:bg-red-500/10 text-red-500/60 hover:text-red-500 rounded-xl transition-all text-[10px] font-black uppercase tracking-widest">
-                            Sign Out Session
+                            Sign Out
                         </button>
                     </form>
                 </div>

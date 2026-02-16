@@ -16,6 +16,9 @@ export default function WorldRecordFormModal({ isOpen, onClose, record }: WorldR
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
 
+    const [title, setTitle] = useState(record?.title || '');
+    const [description, setDescription] = useState(record?.description || '');
+
     if (!isOpen) return null;
 
     async function handleClose() {
@@ -44,14 +47,11 @@ export default function WorldRecordFormModal({ isOpen, onClose, record }: WorldR
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
             <div className={`w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl border transition-all duration-300 scale-in-center no-scrollbar bg-[#111111] border-white/10`}>
-                <header className="px-8 py-6 border-b border-white/10 flex items-center justify-between">
+                <header className="px-5 py-5 md:px-8 md:py-6 border-b border-white/10 flex items-center justify-between">
                     <div>
-                        <span className="px-2 py-0.5 bg-white text-black text-[8px] font-black uppercase tracking-widest rounded mb-2 inline-block">
-                            System Registry
-                        </span>
-                        <h2 className="text-xl font-black text-white uppercase tracking-tighter">
+                        <h2 className="text-lg md:text-xl font-black text-white uppercase tracking-tighter">
                             Edit World Record
                         </h2>
                     </div>
@@ -60,7 +60,7 @@ export default function WorldRecordFormModal({ isOpen, onClose, record }: WorldR
                     </button>
                 </header>
 
-                <form action={handleSubmit} className="p-8 space-y-6">
+                <form action={handleSubmit} className="p-5 md:p-8 space-y-6">
                     <input type="hidden" name="id" value={record?.id || ''} />
                     <input type="hidden" name="image_url" value={record?.image_url || ''} />
 
@@ -69,46 +69,38 @@ export default function WorldRecordFormModal({ isOpen, onClose, record }: WorldR
                         <div className="space-y-6">
                             <div>
                                 <div className="flex justify-between items-end mb-1.5">
-                                    <label className="block text-[10px] font-black uppercase text-white/40 tracking-widest">Headline Title</label>
-                                    <span className="text-[10px] font-bold text-white/20">{record?.title?.length || 0}/30</span>
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 tracking-widest">Headline Title</label>
+                                    <span className={`text-[9px] md:text-[10px] font-bold ${title.length > 30 ? 'text-red-500' : 'text-white/20'}`}>
+                                        {title.length}/30
+                                    </span>
                                 </div>
                                 <input
                                     name="title"
-                                    defaultValue={record?.title}
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
                                     placeholder="e.g. Most World Championships Won"
                                     required
-                                    maxLength={30}
-                                    onChange={(e) => {
-                                        const count = e.target.value.length;
-                                        const counter = e.target.previousElementSibling?.lastElementChild;
-                                        if (counter) counter.textContent = `${count}/30`;
-                                        if (count >= 30) counter?.classList.add('text-red-500');
-                                        else counter?.classList.remove('text-red-500');
-                                    }}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10"
+                                    maxLength={200} // Soft limit
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
                                 />
                             </div>
 
                             <div className="flex flex-col">
                                 <div className="flex justify-between items-end mb-1.5">
-                                    <label className="block text-[10px] font-black uppercase text-white/40 tracking-widest text">Detailed Narrative</label>
-                                    <span className="text-[10px] font-bold text-white/20">{record?.description?.length || 0}/200</span>
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 tracking-widest text">Detailed Narrative</label>
+                                    <span className={`text-[9px] md:text-[10px] font-bold ${description.length > 200 ? 'text-red-500' : 'text-white/20'}`}>
+                                        {description.length}/200
+                                    </span>
                                 </div>
                                 <textarea
                                     name="description"
-                                    defaultValue={record?.description}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
                                     placeholder="Describe the record achievement..."
                                     required
                                     rows={5}
-                                    maxLength={200}
-                                    onChange={(e) => {
-                                        const count = e.target.value.length;
-                                        const counter = e.target.previousElementSibling?.lastElementChild;
-                                        if (counter) counter.textContent = `${count}/200`;
-                                        if (count >= 200) counter?.classList.add('text-red-500');
-                                        else counter?.classList.remove('text-red-500');
-                                    }}
-                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-sm transition-all placeholder:text-white/10 resize-none min-h-[180px]"
+                                    maxLength={2000} // Increased to allow typing past limit
+                                    className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10 resize-none min-h-[180px]"
                                 />
                             </div>
                         </div>
@@ -131,14 +123,14 @@ export default function WorldRecordFormModal({ isOpen, onClose, record }: WorldR
                         <button
                             type="button"
                             onClick={handleClose}
-                            className="w-1/3 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
+                            className="w-1/3 py-3 rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-white transition-all underline underline-offset-8 decoration-white/0 hover:decoration-white/20"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isPending}
-                            className="flex-1 py-3 bg-red-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:bg-red-700 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
+                            className="flex-1 py-3 bg-red-600 text-white rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-xl hover:bg-red-700 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
                         >
                             {isPending ? (
                                 <>

@@ -14,14 +14,23 @@ export default async function WorldRecordPage({
     return (
         <div className="flex flex-col h-full space-y-8 animate-in fade-in duration-700">
             {/* Unified Header */}
-            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-100 pb-8">
+            <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-100">
                 <div>
-                    <h1 className="text-4xl font-black text-[#111111] uppercase tracking-tighter leading-none mb-2">World Record</h1>
+                    <h1 className="text-xl lg:text-3xl font-black text-[#111111] uppercase tracking-tighter leading-none mb-2">World Record</h1>
                     <div className="flex items-center gap-3">
-                        <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                        <p className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.2em]">Global Highlight / Historical Module</p>
+                        <p className="text-zinc-400 font-bold text-[10px] uppercase tracking-[0.2em]">Manage your global highlights</p>
                     </div>
                 </div>
+
+                <Link
+                    href="?showModal=true"
+                    className="inline-flex group relative items-center justify-between md:justify-start gap-4 bg-[#111111] text-white px-8 py-4 rounded-2xl overflow-hidden shadow-2xl hover:bg-black transition-all active:scale-95 transform w-full md:w-auto"
+                >
+                    <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.2em]">Edit Record</span>
+                    <div className="relative z-10 w-6 h-6 rounded-full bg-red-600 flex items-center justify-center group-hover:rotate-90 transition-transform duration-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                    </div>
+                </Link>
             </header>
 
             {/* Content Table Area */}
@@ -91,9 +100,13 @@ export default async function WorldRecordPage({
                             <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
                             Display Guidelines
                         </h3>
-                        <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest leading-relaxed max-w-2xl">
+                        <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest leading-relaxed max-w-2xl hidden md:block">
                             The world record section is a critical branding element. Ensure captions are impactful and imagery follows the "Modern Heritage" dark aesthetic.
                             <span className="block mt-2 text-zinc-400">Strict Limits: Title (30 chars) | Description (200 chars) to prevent layout breakage.</span>
+                        </p>
+                        <p className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest leading-relaxed max-w-2xl md:hidden">
+                            Ensure captions are impactful and imagery follows the "Modern Heritage" dark aesthetic.
+                            <span className="block mt-2 text-zinc-400">Strict Limits: Title (30 chars).</span>
                         </p>
                     </div>
                     <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full translate-x-10 -translate-y-10 blur-3xl"></div>

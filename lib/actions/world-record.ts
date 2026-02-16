@@ -8,8 +8,8 @@ import { uploadToCloudinary } from '@/lib/cloudinary'
 
 const WorldRecordSchema = z.object({
   id: z.string().uuid().optional().or(z.literal('')),
-  title: z.string().min(2, "Title is required").max(30, "Title must be 30 characters or less"),
-  description: z.string().min(10, "Description must be at least 10 characters").max(200, "Description must be 200 characters or less"),
+  title: z.string().min(2, "Title is required").max(35, "Title must be 30 characters or less"),
+  description: z.string().min(10, "Description must be at least 10 characters").max(220, "Description must be 200 characters or less"),
   image_url: z.string().url("Invalid image URL"),
 })
 
