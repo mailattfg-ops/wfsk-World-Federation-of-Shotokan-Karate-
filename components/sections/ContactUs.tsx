@@ -117,7 +117,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                     type="text"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
-                                    placeholder="Michael"
+                                    placeholder="John Doe"
                                     className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                     required
                                 />
@@ -130,7 +130,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                     type="text"
                                     value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
-                                    placeholder="726929669526"
+                                    placeholder="+91 95 67 526150"
                                     className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                     required
                                 />
@@ -145,7 +145,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="abo@gmail.com"
+                                placeholder="name@example.com"
                                 className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                                 required
                             />
@@ -162,7 +162,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                 type="text"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Placeholder"
+                                placeholder="I'm interested in information about..."
                                 className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                             />
                         </div>

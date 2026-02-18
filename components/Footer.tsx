@@ -58,12 +58,12 @@ export function Footer() {
                             </div>
 
                             <div className="flex flex-col items-start w-fit">
-                                <h1 className="text-lg xl:text-3xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight tracking-tight text-left whitespace-nowrap">
+                                <h1 className="text-lg xl:text-2xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight tracking-tight text-left whitespace-nowrap">
                                     {APP_NAME.toUpperCase()}
                                 </h1>
                                 <JapaneseHeading
                                     text={JAPANESE_NAME}
-                                    className="text-sm lg:text-lg xl:text-3xl font-bold pb-px"
+                                    className="text-lg xl:text-2xl font-bold pb-px"
                                 />
                             </div>
                         </div>
@@ -90,13 +90,13 @@ export function Footer() {
                 <div className="flex flex-col items-center xl:items-start gap-4 xl:pl-32">
                     <div className="space-y-2 flex flex-col items-center xl:items-start">
                         <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">ADDRESS</h3>
-                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base xl:text-2xl leading-relaxed max-w-[280px] xl:max-w-[400px] font-medium">
+                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base leading-relaxed max-w-[280px] font-medium">
                             Office 210, Al Serkal Avenue, Al Quoz Industrial Area 1, Dubai, United Arab Emirates
                         </p>
                     </div>
                     <div className="space-y-2 flex flex-col items-center xl:items-start">
                         <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">PHONE</h3>
-                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base xl:text-2xl font-medium">
+                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base font-medium">
                             +91 8275 900 700
                         </p>
                     </div>
@@ -104,7 +104,7 @@ export function Footer() {
 
                 {/* Right Column - Navigation */}
                 {/* Right Column - Navigation */}
-                <div className="flex flex-col items-center xl:items-start gap-4 pt-2">
+                <div className="flex flex-col items-center xl:items-start gap-4 pt-2 lg:pt-0">
                     <Link href="/branches" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">
                         OUR BRANCHES
                     </Link>

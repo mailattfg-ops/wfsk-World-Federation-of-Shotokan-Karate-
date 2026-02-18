@@ -35,11 +35,18 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             <aside className={`fixed lg:static inset-y-0 left-0 w-64 bg-[#111111] text-white z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'} flex flex-col`}>
                 <div className="p-4 border-b border-white/10 flex items-center justify-between">
                     <div>
-                        <div className="flex items-center mb-2 gap-1">
-                            <div className="relative w-8 h-8">
+                        <div className="flex items-center mb-2 gap-2">
+                            <div className="relative w-8 h-8 shrink-0">
                                 <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
                             </div>
-                            <span className="font-bold text-sm tracking-tight uppercase">WFSK</span>
+                            <div className="flex flex-col justify-center">
+                                {/* Mobile/Tablet: Short Form */}
+                                <span className="lg:hidden font-bold text-sm tracking-tight uppercase">WFSK</span>
+                                {/* Desktop: Full Form */}
+                                <span className="hidden lg:block font-bold text-[10px] xl:text-xs tracking-wide uppercase leading-tight w-full whitespace-normal">
+                                    {APP_NAME}
+                                </span>
+                            </div>
                         </div>
                         {/* <p className="text-[10px] text-zinc-400 uppercase tracking-widest leading-none">
                             {APP_NAME}

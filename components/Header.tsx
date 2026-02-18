@@ -124,10 +124,10 @@ export function Header() {
                     </nav>
 
                     <div className="mt-auto pb-8">
-                        <div className="relative w-16 h-16 opacity-50 mb-4">
+                        <div className="relative w-16 h-16 opacity-50 mb-1">
                             <Image src="/images/logo.png" alt="WFSK Logo" fill className="object-contain grayscale" />
                         </div>
-                        <p className="text-zinc-500 text-xs tracking-widest uppercase">
+                        <p className="text-zinc-500 text-sm tracking-widest uppercase">
                             World Federation of<br />Shotokan Karate
                         </p>
                     </div>

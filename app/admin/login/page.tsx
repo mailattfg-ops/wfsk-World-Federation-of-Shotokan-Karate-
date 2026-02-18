@@ -31,12 +31,12 @@ export default function LoginPage() {
 
 
                 <div className="relative z-10 w-full h-full flex flex-col justify-between p-8">
-                    <div className="flex items-center gap-4">
-                        <div className="relative w-12 h-12">
+                    <div className="flex items-center">
+                        <div className="relative w-16 h-16">
                             <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
                         </div>
                         <div>
-                            <span className="block text-white font-black text-xl uppercase tracking-tighter leading-none">World Federation of Shotokan Karate</span>
+                            <span className="block text-white font-black text-lg xl:text-xl uppercase tracking-tighter leading-none">World Federation of Shotokan Karate</span>
                             <span className="text-[10px] text-red-600 font-bold uppercase tracking-[0.3em]">Access Restricted</span>
                         </div>
                     </div>
@@ -59,12 +59,7 @@ export default function LoginPage() {
             {/* Right Column: Authentication Form */}
             <div className="flex-1 flex flex-col justify-center items-center p-8 lg:p-24 bg-white relative">
                 {/* Mobile Identity */}
-                <div className="lg:hidden absolute top-12 left-0 right-0 flex flex-col items-center">
-                    <div className="relative w-16 h-16 mb-4">
-                        <Image src="/images/logo.png" alt="Logo" fill className="object-contain" />
-                    </div>
-                    <h1 className="text-black text-xs font-black uppercase tracking-widest">{APP_NAME} Admin</h1>
-                </div>
+
 
                 <div className="w-full max-w-sm space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700">
                     <div className="space-y-4">
