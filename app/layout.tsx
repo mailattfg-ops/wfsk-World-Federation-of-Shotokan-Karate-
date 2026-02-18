@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     description: "Official website of the World Federation of Shotokan Karate",
     siteName: "WFSK",
   },
+  icons: {
+    icon: "/images/fav%20wfsk.png",
+  },
   twitter: {
     card: "summary_large_image",
     title: "WFSK - World Federation of Shotokan Karate",

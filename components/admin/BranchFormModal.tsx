@@ -119,6 +119,7 @@ export default function BranchFormModal({ isOpen, onClose, editingBranch }: Bran
                                 defaultValue={editingBranch?.image_url}
                                 required={!editingBranch}
                                 fullHeight
+                                maxSizeMB={4}
                             />
                         </div>
                     </div>

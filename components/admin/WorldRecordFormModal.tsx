@@ -113,7 +113,7 @@ export default function WorldRecordFormModal({ isOpen, onClose, record }: WorldR
                                 defaultValue={record?.image_url}
                                 required={!record}
                                 fullHeight
-                                maxSizeMB={10}
+                                maxSizeMB={4}
                             />
                         </div>
                     </div>

@@ -140,6 +140,7 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                                 defaultValue={editingMember?.image_url}
                                 required={!editingMember}
                                 fullHeight
+                                maxSizeMB={4}
                             />
                         </div>
 

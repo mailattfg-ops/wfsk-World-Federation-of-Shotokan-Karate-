@@ -111,17 +111,17 @@ export function Footer() {
 
                 {/* Right Column - Navigation */}
                 <div className="flex flex-col items-center md:items-start gap-4 sm:gap-5 pt-0 md:pt-2">
-                    <Link href="/about" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
-                        ABOUT
+                    <Link href="/branches" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                        OUR BRANCHES
                     </Link>
-                    <Link href="/packages" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
-                        PACKAGES
+                    <Link href="/team" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                        OUR TEAM
                     </Link>
                     <Link href="/news" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
                         NEWS & EVENTS
                     </Link>
-                    <Link href="/contact" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
-                        CONTACT
+                    <Link href="/black-belts" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                        BLACK BELTS
                     </Link>
                 </div>
 

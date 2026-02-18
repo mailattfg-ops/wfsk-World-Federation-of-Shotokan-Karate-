@@ -125,7 +125,7 @@ export default function NewsFormModal({ isOpen, onClose, news }: NewsFormModalPr
                                             label="Cover Photo"
                                             defaultValue={news?.image_url}
                                             required={!news || news?.media_type === 'video'}
-                                            maxSizeMB={10}
+                                            maxSizeMB={4}
                                         />
                                     </div>
                                 ) : (
