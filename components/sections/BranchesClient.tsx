@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { BranchCard } from "../ui/BranchCard";
 
-const FILTERS = ["All", "India", "UAE", "Gambia", "Qatar", "Bahrain"];
-
 export function BranchesClient({ initialBranches }: { initialBranches: any[] }) {
     const [activeFilter, setActiveFilter] = useState("All");
+
+    // Dynamic Filter: Get unique countries from branches
+    const allCountries = ["All", ...Array.from(new Set(initialBranches.map(b => b.country || b.category))).filter(Boolean).sort()];
 
     const filteredBranches = activeFilter === "All"
         ? initialBranches
@@ -14,20 +15,25 @@ export function BranchesClient({ initialBranches }: { initialBranches: any[] }) 
 
     return (
         <div className="space-y-4 xl:space-y-8">
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-1 md:gap-2 justify-center lg:justify-start px-1 sm:px-0">
-                {FILTERS.map((filter) => (
-                    <button
-                        key={filter}
-                        onClick={() => setActiveFilter(filter)}
-                        className={`px-2 sm:px-6 py-1.5 sm:py-2 rounded-md text-[9px] sm:text-sm font-bold transition-all duration-300 ${activeFilter === filter
-                            ? "bg-white text-black shadow-md border border-black/5"
-                            : "bg-[#2C2C2C] text-[#C0C0C0] hover:bg-[#3C3C3C]"
-                            } font-(family-name:--font-geist-sans) whitespace-nowrap`}
+            {/* Filter Dropdown */}
+            <div className="flex justify-start px-1 sm:px-0">
+                <div className="relative">
+                    <select
+                        value={activeFilter}
+                        onChange={(e) => setActiveFilter(e.target.value)}
+                        className="appearance-none bg-[#2C2C2C] text-[#C0C0C0] px-3 sm:px-6 py-1.5 sm:py-2 pr-8 rounded-md text-[10px] sm:text-sm font-bold font-(family-name:--font-geist-sans) border border-white/5 focus:outline-none cursor-pointer transition-colors hover:bg-[#3C3C3C]"
                     >
-                        {filter}
-                    </button>
-                ))}
+                        {allCountries.map((country) => (
+                            <option key={country as string} value={country as string}>
+                                {country as string}
+                            </option>
+                        ))}
+                    </select>
+                    {/* Custom Arrow Icon */}
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none text-white">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                </div>
             </div>
 
             {/* Grid */}

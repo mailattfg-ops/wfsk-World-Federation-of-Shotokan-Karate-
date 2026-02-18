@@ -18,6 +18,17 @@ export function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMenuOpen]);
+
     return (
         <>
             <header className={`fixed top-4 sm:top-6 left-0 w-full px-2 sm:px-6 z-50 flex justify-between items-center pointer-events-none transition-all duration-300 ${scrolled ? "top-2 sm:top-4" : ""}`}>
@@ -52,8 +63,8 @@ export function Header() {
                 <div className="hidden lg:flex items-center justify-between w-full pointer-events-none">
                     {/* Left Branding Island */}
                     <div className="bg-[#111111]/90 backdrop-blur-md rounded-lg pl-3 pr-8 flex items-center shadow-2xl border border-white/5 pointer-events-auto h-[66px]">
-                        <Link href="/" className="flex items-center gap-2">
-                            <div className="relative w-12 h-12 shrink-0">
+                        <Link href="/" className="flex items-center">
+                            <div className="relative w-14 h-14 xl:w-16 xl:h-16 shrink-0">
                                 <Image src="/images/logo.png" alt="WFSK Logo" fill className="object-contain" />
                             </div>
                             <div className="flex flex-col items-start justify-center">

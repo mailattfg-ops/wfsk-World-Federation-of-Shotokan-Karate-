@@ -6,36 +6,35 @@ import { APP_NAME, JAPANESE_NAME } from "@/lib/constants";
 export function Footer() {
     return (
         <footer className="w-full bg-[#E5E5E5] py-6 px-2 sm:px-4">
-            <div className="max-w-7xl mx-auto xl:max-w-none xl:mx-0 xl:px-12 grid grid-cols-1 md:grid-cols-[1.4fr_1fr_0.8fr] lg:grid-cols-[2fr_1fr_0.8fr] xl:grid-cols-[0.8fr_1.2fr_1fr] gap-x-2 md:gap-x-4 lg:gap-x-8 gap-y-12 pb-12">
+            <div className="max-w-7xl mx-auto xl:max-w-none xl:mx-0 xl:px-12 grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr_1fr] gap-y-4 xl:gap-y-12 pb-4 xl:pb-12 text-center xl:text-left">
 
                 {/* Left Column - Brand & Info */}
-                <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-0 md:space-y-6 w-full px-1 sm:px-0 md:pl-4 xl:pl-0 xl:pt-6 lg:col-span-1">
+                <div className="flex flex-col items-center xl:items-start w-full px-1 sm:px-0 xl:pl-0 xl:pt-6">
 
-                    {/* MOBILE/TABLET BRANDING (Centered Row) */}
-                    <div className="lg:hidden flex flex-col items-center md:items-start max-w-full">
-                        <div className="flex flex-row items-center gap-0 w-full justify-center md:justify-start mt-1">
-                            {/* Logo - Sized to 65x52px on mobile, 75x60px on sm */}
+                    {/* MOBILE/TABLET BRANDING (Centered Row) - Visible up to LG (exclusive) i.e. hidden on LG+ */}
+                    <div className="lg:hidden flex flex-col items-center max-w-full">
+                        <div className="flex flex-row items-center gap-2 w-full justify-center mt-1">
                             <div className="relative shrink-0">
                                 <Image
                                     src="/images/logo.png"
                                     alt="WFSK Logo"
-                                    width={80}
-                                    height={64}
+                                    width={50}
+                                    height={50}
                                     className="object-contain"
                                     priority
                                 />
                             </div>
 
-                            {/* Text Columns - Top English (13px), Bottom Japanese (14px) */}
+                            {/* Text Columns */}
                             <div className="flex flex-col items-start justify-center py-0.5 overflow-hidden">
                                 <div className="w-fit">
-                                    <h2 className="text-[13px] sm:text-[15px] md:text-[15px] lg:text-lg font-extrabold text-[#111111] font-(family-name:--font-geist-sans) leading-none tracking-tight text-left whitespace-nowrap">
+                                    <h2 className="text-[9px] sm:text-[15px] font-extrabold text-[#111111] font-(family-name:--font-geist-sans) leading-none tracking-tight text-left whitespace-nowrap">
                                         {APP_NAME.toUpperCase()}
                                     </h2>
 
                                     <div className="flex items-center w-full mt-0.5 sm:mt-1">
                                         <div className="h-px bg-[#FF0000] grow" />
-                                        <span className="text-[14px] sm:text-[16px] md:text-[10px] lg:text-[14px] text-[#FF0000] font-bold tracking-[0.15em] shrink-0 px-1 leading-none">
+                                        <span className="text-[10px] sm:text-[12px] text-[#FF0000] font-bold tracking-[0.15em] shrink-0 px-1 leading-none">
                                             {JAPANESE_NAME}
                                         </span>
                                         <div className="h-px bg-[#FF0000] grow" />
@@ -45,84 +44,95 @@ export function Footer() {
                         </div>
                     </div>
 
-                    {/* DESKTOP BRANDING (Original Design Restored) */}
+                    {/* DESKTOP BRANDING (Original Design) - Visible only on LG+ */}
                     <div className="hidden lg:flex flex-col items-start w-full">
-                        {/* Row for Logo and Text - Vertically Centered */}
                         <div className="flex flex-row items-center w-full">
-                            {/* Logo - Sized down to prevent "big" look, added safety margin for "cutted" issue */}
-                            <div className="relative shrink-0">
+                            <div className="relative shrink-0 w-[60px] h-[60px] xl:w-[90px] xl:h-[90px] mr-2 xl:mr-0">
                                 <Image
                                     src="/images/logo.png"
                                     alt="WFSK Logo"
-                                    width={90}
-                                    height={90}
+                                    fill
                                     className="object-contain"
                                     priority
                                 />
                             </div>
 
-                            {/* Text Titles Block - Wrapped in w-fit to ensure JapaneseHeading matches English Title width */}
                             <div className="flex flex-col items-start w-fit">
-                                <h1 className="text-lg xl:text-2xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight tracking-tight text-left whitespace-nowrap">
+                                <h1 className="text-lg xl:text-3xl font-bold text-black font-(family-name:--font-cal-sans) leading-tight tracking-tight text-left whitespace-nowrap">
                                     {APP_NAME.toUpperCase()}
                                 </h1>
                                 <JapaneseHeading
                                     text={JAPANESE_NAME}
-                                    className="text-lg xl:text-2xl font-bold pb-px"
+                                    className="text-sm lg:text-lg xl:text-3xl font-bold pb-px"
                                 />
                             </div>
                         </div>
 
-                        {/* Copyright & Socials Area - Unified responsive block */}
-                        <div className="hidden lg:flex flex-col items-start xl:items-center w-full pt-2 xl:pl-32">
-                            <p className="text-gray-500 text-xs xl:text-sm font-(family-name:--font-geist-sans) mb-3 xl:mb-2 text-left xl:text-center">
+                        <div className="flex flex-col items-start lg:items-center w-full pt-2 xl:pl-32">
+                            <p className="text-gray-500 text-sm font-(family-name:--font-geist-sans) mb-2 text-center">
                                 © 2025, WFSK. All Rights Reserved.
                             </p>
-                            <div className="flex items-center justify-start xl:justify-center gap-3">
-                                <Link href="#" className="w-10 h-10 xl:w-9 xl:h-9 bg-[#333333] rounded-full flex items-center justify-center text-white hover:bg-black transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="xl:w-[18px] xl:h-[18px]"><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>
-                                </Link>
-                                <Link href="#" className="w-10 h-10 xl:w-9 xl:h-9 bg-[#333333] rounded-full flex items-center justify-center text-white hover:bg-black transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="xl:w-[18px] xl:h-[18px]"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
-                                </Link>
-                                <Link href="#" className="w-10 h-10 xl:w-9 xl:h-9 bg-[#333333] rounded-full flex items-center justify-center text-white hover:bg-black transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="xl:w-[18px] xl:h-[18px]"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                            <div className="flex items-center justify-center gap-3">
+                                <Link
+                                    href="https://www.instagram.com/wfsk_official?igsh=Z2p1cDBibDM5emx1"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-9 h-9 bg-[#333333] rounded-full flex items-center justify-center text-white hover:bg-[#E1306C] transition-colors"
+                                    aria-label="Instagram"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {/* Center Column - Contact Info */}
-                <div className="flex flex-col items-center md:items-start gap-2 lg:gap-8 md:gap-4 pt-0 md:pt-2 xl:pl-32">
-                    <div className="space-y-3 flex flex-col items-center md:items-start text-center md:text-left">
-                        <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">ADDRESS</h3>
-                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-base leading-relaxed max-w-[280px] font-medium">
+                <div className="flex flex-col items-center xl:items-start gap-4 xl:pl-32">
+                    <div className="space-y-2 flex flex-col items-center xl:items-start">
+                        <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">ADDRESS</h3>
+                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base xl:text-2xl leading-relaxed max-w-[280px] xl:max-w-[400px] font-medium">
                             Office 210, Al Serkal Avenue, Al Quoz Industrial Area 1, Dubai, United Arab Emirates
                         </p>
                     </div>
-                    <div className="space-y-3 flex flex-col items-center md:items-start text-center md:text-left">
-                        <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">PHONE</h3>
-                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-base font-medium">
-                            +971 4 123 4567
+                    <div className="space-y-2 flex flex-col items-center xl:items-start">
+                        <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">PHONE</h3>
+                        <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base xl:text-2xl font-medium">
+                            +91 8275 900 700
                         </p>
                     </div>
                 </div>
 
                 {/* Right Column - Navigation */}
-                <div className="flex flex-col items-center md:items-start gap-4 sm:gap-5 pt-0 md:pt-2">
-                    <Link href="/branches" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                {/* Right Column - Navigation */}
+                <div className="flex flex-col items-center xl:items-start gap-4 pt-2">
+                    <Link href="/branches" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">
                         OUR BRANCHES
                     </Link>
-                    <Link href="/team" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                    <Link href="/team" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">
                         OUR TEAM
                     </Link>
-                    <Link href="/news" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                    <Link href="/news" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">
                         NEWS & EVENTS
                     </Link>
-                    <Link href="/black-belts" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold md:font-semibold text-lg md:text-base lg:text-3xl leading-tight">
+                    <Link href="/black-belts" className="text-[#111111] uppercase hover:text-[#CC0000] transition-colors font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">
                         BLACK BELTS
                     </Link>
+
+                    {/* Mobile/Tablet Instagram & Copyright - Visible only up to XL */}
+                    <div className="lg:hidden flex flex-col items-center gap-3 mt-4">
+                        <Link
+                            href="https://www.instagram.com/wfsk_official?igsh=Z2p1cDBibDM5emx1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-10 h-10 bg-[#333333] rounded-full flex items-center justify-center text-white hover:bg-[#E1306C] transition-colors"
+                            aria-label="Instagram"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                        </Link>
+                        <p className="text-gray-500 text-xs font-(family-name:--font-geist-sans)">
+                            © 2025, WFSK. All Rights Reserved.
+                        </p>
+                    </div>
                 </div>
 
             </div>

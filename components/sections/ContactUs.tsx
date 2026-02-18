@@ -1,10 +1,51 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
+import { useState, FormEvent } from "react";
+import Image from "next/image";
+
 interface ContactUsProps {
     className?: string;
 }
 
 export function ContactUs({ className = "" }: ContactUsProps) {
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleBookNow = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const text = encodeURIComponent("Hello, I am interested in booking a session.");
+        window.open(`https://wa.me/918275900700?text=${text}`, "_blank");
+    };
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        // Basic Validation
+        if (!name || !phone || !email) {
+            alert("Please fill in all required fields (Name, Phone, Email).");
+            setLoading(false);
+            return;
+        }
+
+        const formattedMessage = `*New Inquiry from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Message:* ${message || "N/A"}`;
+        const encodedMessage = encodeURIComponent(formattedMessage);
+
+        // Redirect to WhatsApp
+        window.open(`https://wa.me/918275900700?text=${encodedMessage}`, "_blank");
+        setLoading(false);
+
+        // Reset form (optional, depending on UX preference)
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+    };
+
     return (
         <section className={`w-full bg-[#E5E5E5] ${className}`}>
             <div className="w-full mx-auto bg-white rounded-lg shadow-sm flex flex-col md:flex-row min-h-[600px] p-2 sm:p-4">
@@ -29,9 +70,9 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                             Learn Karate and keep your health in check.
                         </p>
 
-                        <Link
-                            href="/register"
-                            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#E81E26] text-white w-[114px] h-[28px] sm:w-auto sm:h-auto px-3 py-2 sm:px-6 sm:py-4  font-bold text-[11px] sm:text-base tracking-wide hover:bg-[#B0171D] transition-all group"
+                        <button
+                            onClick={handleBookNow}
+                            className="inline-flex items-center justify-center gap-2 sm:gap-3 bg-[#E81E26] text-white w-[114px] h-[28px] sm:w-auto sm:h-auto px-3 py-2 sm:px-6 sm:py-4  font-bold text-[11px] sm:text-base tracking-wide hover:bg-[#B0171D] transition-all group cursor-pointer"
                         >
                             <span className="shrink-0">Book Now</span>
                             <svg
@@ -50,7 +91,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                     strokeLinejoin="round"
                                 />
                             </svg>
-                        </Link>
+                        </button>
                     </div>
                 </div>
 
@@ -66,7 +107,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                         </p>
                     </div>
 
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-2 gap-4 lg:gap-6">
                             <div className="space-y-2">
                                 <label className="text-[13px] font-semibold font-(family-name:--font-geist-sans) text-[#171717B2] uppercase">
@@ -74,8 +115,11 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                 </label>
                                 <input
                                     type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     placeholder="Michael"
                                     className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                    required
                                 />
                             </div>
                             <div className="space-y-2">
@@ -84,8 +128,11 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                                 </label>
                                 <input
                                     type="text"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                     placeholder="726929669526"
                                     className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                    required
                                 />
                             </div>
                         </div>
@@ -96,8 +143,11 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                             </label>
                             <input
                                 type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="abo@gmail.com"
                                 className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
+                                required
                             />
                         </div>
 
@@ -110,6 +160,8 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                             </div>
                             <input
                                 type="text"
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
                                 placeholder="Placeholder"
                                 className="w-full px-4 py-3 bg-white border-2 border-[#1717171A] rounded-xl text-sm text-[#111111] focus:outline-none focus:border-[#CC0000] placeholder:text-gray-400 font-(family-name:--font-geist-sans)"
                             />
@@ -122,9 +174,10 @@ export function ContactUs({ className = "" }: ContactUsProps) {
 
                             <button
                                 type="submit"
-                                className="w-full bg-[#111111] text-white font-bold py-4 rounded-lg hover:bg-black transition-colors"
+                                disabled={loading}
+                                className="w-full bg-[#111111] text-white font-bold py-4 rounded-lg hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             >
-                                Send Message
+                                {loading ? "Sending..." : "Send Message"}
                             </button>
                         </div>
                     </form>
