@@ -8,7 +8,7 @@ export function NewsSection({ news }: { news: any[] }) {
             <div className="w-full mx-auto space-y-4 xl:space-y-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-8">
                     {news.map((item) => (
-                        <div key={item.id} className="animate-in fade-in slide-in-from-bottom-10 duration-1000 fill-mode-both">
+                        <div key={item.id} className="animate-in fade-in slide-in-from-bottom-10 duration-1000 fill-mode-both h-full">
                             <NewsCard
                                 title={item.title}
                                 subtitle={item.subtitle}

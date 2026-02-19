@@ -11,7 +11,34 @@ interface NewsCardProps {
     media_type?: 'image' | 'video';
 }
 
+import { useState, useRef, useEffect } from 'react';
+
+// ... existing imports
+
 export function NewsCard({ title, subtitle, description, image_url, video_url, media_type = 'image' }: NewsCardProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [showButton, setShowButton] = useState(false);
+    const descriptionRef = useRef<HTMLParagraphElement>(null);
+
+    useEffect(() => {
+        const checkOverflow = () => {
+            if (descriptionRef.current) {
+                const { scrollHeight, clientHeight } = descriptionRef.current;
+                // If it's already expanded, we should definitely show the button (to collapse it)
+                // But initially (collapsed), check if content is actually taller than visible area
+                if (scrollHeight > clientHeight || isExpanded) {
+                    setShowButton(true);
+                } else {
+                    setShowButton(false);
+                }
+            }
+        };
+
+        checkOverflow();
+        window.addEventListener('resize', checkOverflow);
+        return () => window.removeEventListener('resize', checkOverflow);
+    }, [description, isExpanded]);
+
     // Extract YouTube ID
     const getYouTubeId = (url: string) => {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -23,9 +50,9 @@ export function NewsCard({ title, subtitle, description, image_url, video_url, m
     const videoId = isVideo ? getYouTubeId(video_url || '') : null;
 
     return (
-        <div className="group bg-[#262626] rounded-lg overflow-hidden flex flex-col h-full min-h-[500px] md:min-h-[600px]">
-            {/* Media Section - 55% height */}
-            <div className="relative h-[55%] w-full bg-zinc-900 overflow-hidden">
+        <div className="group bg-[#262626] rounded-lg overflow-hidden flex flex-col h-full min-h-[500px] md:min-h-[600px] transition-all duration-300">
+            {/* Media Section - Fixed height or Aspect Ratio */}
+            <div className="relative h-[300px] md:h-[350px] w-full bg-zinc-900 shrink-0 overflow-hidden">
                 {videoId ? (
                     <iframe
                         src={`https://www.youtube.com/embed/${videoId}?autoplay=0&mute=1`}
@@ -52,19 +79,39 @@ export function NewsCard({ title, subtitle, description, image_url, video_url, m
                 )}
             </div>
 
-            {/* Content Section - 45% height */}
-            <div className="p-6 md:p-8 lg:p-10 flex flex-col h-[45%] text-center">
+            {/* Content Section - Flexible height */}
+            <div className="px-3 py-5 md:p-6 flex flex-col grow text-center">
                 {subtitle && (
-                    <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">
+                    <span className="text-red-500 text-[10px] font-black uppercase tracking-[0.3em] block mb-2">
                         {subtitle}
                     </span>
                 )}
-                <h3 className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-normal leading-[1.1] mb-4 line-clamp-2 font-(family-name:--font-cal-sans)">
+                <h3 className="text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal tracking-normal leading-[1.1] mb-4 font-(family-name:--font-cal-sans)">
                     {title}
                 </h3>
-                <p className="text-zinc-400 text-sm md:text-base font-medium leading-relaxed line-clamp-4 font-(family-name:--font-geist-sans)">
-                    {description}
-                </p>
+
+                <div className="relative">
+                    <p
+                        ref={descriptionRef}
+                        className={`text-zinc-400 text-sm md:text-base font-medium leading-relaxed font-(family-name:--font-geist-sans) transition-all duration-300 ${!isExpanded ? 'line-clamp-4' : ''}`}
+                    >
+                        {description}
+                    </p>
+
+                    {/* Gradient overlay when collapsed (optional but nice) */}
+                    {showButton && !isExpanded && (
+                        <div className="absolute bottom-0 left-0 right-0 h-8 bg-linear-to-t from-[#262626] to-transparent pointer-events-none"></div>
+                    )}
+                </div>
+
+                {showButton && (
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300 self-center border-b border-transparent hover:border-white pb-0.5"
+                    >
+                        {isExpanded ? 'Read Less' : 'Read More'}
+                    </button>
+                )}
             </div>
         </div>
     );

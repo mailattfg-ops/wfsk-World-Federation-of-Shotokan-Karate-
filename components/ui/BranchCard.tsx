@@ -34,7 +34,7 @@ export function BranchCard({ country, title, description, leader, image }: Branc
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#737373] text-[14px] sm:text-base md:text-lg lg:text-lg xl:text-[20px] font-(family-name:--font-geist-sans) leading-tight">
+                <p className="text-[#737373] text-[14px] sm:text-base md:text-lg lg:text-lg xl:text-[20px] font-(family-name:--font-geist-sans) leading-tight break-words hyphens-auto w-full">
                     {description}
                 </p>
 
