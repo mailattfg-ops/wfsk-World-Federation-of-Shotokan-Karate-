@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { DeleteButton } from '@/components/admin/DeleteButton'
 import { toast } from '@/components/ui/Toaster'
+import { getYouTubeThumbnail } from '@/lib/utils'
 
 export default function NewsManagementClient({ initialNews }: { initialNews: NewsEvent[] }) {
     const router = useRouter()
@@ -29,6 +30,13 @@ export default function NewsManagementClient({ initialNews }: { initialNews: New
                             {news.image_url ? (
                                 <Image
                                     src={news.image_url}
+                                    alt={news.title}
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            ) : news.video_url ? (
+                                <Image
+                                    src={getYouTubeThumbnail(news.video_url) || ''}
                                     alt={news.title}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
