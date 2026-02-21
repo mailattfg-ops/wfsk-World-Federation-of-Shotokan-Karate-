@@ -23,6 +23,7 @@ export async function BlackBeltsSection() {
                             showBelt={member.show_belt}
                             beltColor={member.belt_color}
                             active={true}
+                            achievements={member.achievements}
                         />
                     ))}
                 </div>

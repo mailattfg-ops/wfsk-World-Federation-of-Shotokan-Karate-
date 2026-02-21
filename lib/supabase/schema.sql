@@ -16,6 +16,7 @@ CREATE TABLE members (
     country TEXT DEFAULT 'Global',
     show_belt BOOLEAN DEFAULT true,
     belt_color TEXT DEFAULT '#E81E26',
+    achievements TEXT[] DEFAULT '{}',
     display_order INTEGER DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

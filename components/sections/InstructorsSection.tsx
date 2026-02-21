@@ -53,6 +53,7 @@ export async function InstructorsSection({ countryName, flagCode }: InstructorsS
                             showBelt={member.show_belt}
                             beltColor={member.belt_color}
                             active={true}
+                            achievements={member.achievements}
                         />
                     ))}
                 </div>

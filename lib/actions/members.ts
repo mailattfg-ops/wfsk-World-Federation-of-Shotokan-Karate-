@@ -19,6 +19,7 @@ export interface Member {
   country?: string;
   show_belt: boolean;
   belt_color?: string;
+  achievements?: string[];
   display_order: number;
   created_at?: string;
 }
@@ -32,6 +33,7 @@ const MemberSchema = z.object({
     country: z.string().optional(),
     show_belt: z.boolean().default(true),
     belt_color: z.string().optional().default('#E81E26'),
+    achievements: z.array(z.string()).max(3).optional().default([]),
 }).refine((data) => {
     if (data.show_belt) {
         return !!data.belt_dan && !!data.belt_color;
@@ -78,6 +80,7 @@ export async function addMember(formData: FormData) {
             country: formData.get('country') || undefined,
             show_belt: formData.get('show_belt') === 'true',
             belt_color: formData.get('belt_color') || undefined,
+            achievements: JSON.parse(formData.get('achievements') as string || '[]'),
         })
 
         const { error } = await supabase.from('members').insert([validatedData])
@@ -140,6 +143,7 @@ export async function updateMember(id: string, formData: FormData) {
             country: formData.get('country') || undefined,
             show_belt: formData.get('show_belt') === 'true',
             belt_color: formData.get('belt_color') || undefined,
+            achievements: JSON.parse(formData.get('achievements') as string || '[]'),
         })
 
         const { error } = await supabase

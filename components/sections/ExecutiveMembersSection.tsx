@@ -24,6 +24,7 @@ export async function ExecutiveMembersSection() {
                             showBelt={member.show_belt}
                             beltColor={member.belt_color}
                             active={true}
+                            achievements={member.achievements}
                         />
                     ))}
                 </div>

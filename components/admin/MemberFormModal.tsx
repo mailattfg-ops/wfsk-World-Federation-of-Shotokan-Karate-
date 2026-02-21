@@ -20,6 +20,10 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
     const [showRankBelt, setShowRankBelt] = useState(
         editingMember ? editingMember.show_belt : false
     );
+    const [achievements, setAchievements] = useState<string[]>(
+        editingMember?.achievements || []
+    );
+    const [newAchievement, setNewAchievement] = useState("");
     const router = useRouter();
 
     if (!isOpen) return null;
@@ -38,6 +42,8 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                 return;
             }
         }
+
+        formData.set('achievements', JSON.stringify(achievements));
 
         startTransition(async () => {
             try {
@@ -128,6 +134,61 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                                         className="w-4 h-4 accent-red-500"
                                     />
                                     <label htmlFor="modal_show_belt" className="text-[9px] md:text-[10px] font-black text-white/60 uppercase tracking-widest cursor-pointer select-none">Show Rank/Belt</label>
+                                </div>
+                            </div>
+
+                            {/* Achievements Section */}
+                            <div className="space-y-4 pt-4 border-t border-white/5">
+                                <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">
+                                    Special Achievements (Max 3)
+                                </label>
+                                <div className="space-y-3">
+                                    <div className="flex gap-2">
+                                        <input
+                                            value={newAchievement}
+                                            type="text"
+                                            onChange={(e) => setNewAchievement(e.target.value)}
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    if (newAchievement.trim() && achievements.length < 3) {
+                                                        setAchievements([...achievements, newAchievement.trim()]);
+                                                        setNewAchievement("");
+                                                    }
+                                                }
+                                            }}
+                                            className={`flex-1 px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs transition-all placeholder:text-white/10 ${achievements.length >= 3 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                            placeholder={achievements.length >= 3 ? "Limit reached" : "Add achievement..."}
+                                            disabled={achievements.length >= 3}
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                if (newAchievement.trim() && achievements.length < 3) {
+                                                    setAchievements([...achievements, newAchievement.trim()]);
+                                                    setNewAchievement("");
+                                                }
+                                            }}
+                                            disabled={!newAchievement.trim() || achievements.length >= 3}
+                                            className="px-4 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white text-xs font-bold transition-all disabled:opacity-30"
+                                        >
+                                            Add
+                                        </button>
+                                    </div>
+                                    <div className="flex flex-wrap gap-2">
+                                        {achievements.map((ach, idx) => (
+                                            <div key={idx} className="flex items-center gap-2 px-3 py-1.5 bg-red-600/20 border border-red-500/30 rounded-full group">
+                                                <span className="text-[10px] font-bold text-red-100">{ach}</span>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setAchievements(achievements.filter((_, i) => i !== idx))}
+                                                    className="text-red-400 hover:text-red-200 transition-colors"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>

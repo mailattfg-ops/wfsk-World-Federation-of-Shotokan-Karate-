@@ -3,7 +3,7 @@ import { TeamCard } from "../ui/TeamCard";
 import { getMembers } from "@/lib/actions/members";
 
 export async function OurTeam() {
-    const members = await getMembers('director');
+    const members = await getMembers('executive');
 
     return (
         <section className="w-full bg-[#E5E5E5] p-4">
@@ -21,6 +21,7 @@ export async function OurTeam() {
                             active={true}
                             beltColor={member.belt_color}
                             showBelt={member.show_belt}
+                            achievements={member.achievements}
                         />
                     ))}
                 </div>
