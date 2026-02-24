@@ -20,7 +20,7 @@ export function Hero() {
                 <div className="flex flex-col xl:flex-row w-full items-end xl:items-center gap-0">
 
                     {/* Left Side: Main Title */}
-                    <div className="flex-shrink-0 xl:max-w-3xl 2xl:max-w-4xl w-full">
+                    <div className="shrink-0 xl:max-w-3xl 2xl:max-w-4xl w-full">
                         <h1 className="text-[32px] sm:text-4xl lg:text-5xl xl:text-[42px] tracking-tight leading-[1.1] sm:leading-[1.05] font-(family-name:--font-inter)">
                             World Federation of <br />
                             <span className="text-[#F02306] font-bold">Shotokan Karate</span>
@@ -31,7 +31,7 @@ export function Hero() {
                     <div className="flex items-stretch h-auto w-full xl:w-auto xl:pl-8 mt-5 xl:mt-0">
 
                         {/* Vertical Divider */}
-                        <div className="hidden xl:block w-[1px] bg-white/30 mr-8 flex-shrink-0 self-stretch my-1"></div>
+                        <div className="hidden xl:block w-px bg-white/30 mr-8 shrink-0 self-stretch my-1"></div>
 
                         {/* Stats Grid */}
                         <div className="grid grid-cols-3 gap-2 sm:gap-6 xl:gap-6 text-left w-full xl:w-auto overflow-visible">
@@ -39,7 +39,7 @@ export function Hero() {
                             {/* Item 1 */}
                             <div className="flex flex-col gap-1.5 sm:gap-3">
                                 <h3 className="font-semibold text-[15px] sm:text-[18px] xl:text-[22px] leading-tight tracking-tight">
-                                    32+ Years of <br /> Martial Arts <br /> Experience
+                                    37+ Years of <br /> Martial Arts <br /> Experience
                                 </h3>
                                 <p className="text-zinc-400 text-[8px] sm:text-[13px] xl:text-[14px] font-normal leading-relaxed">
                                     Backed by over three decades of national and international martial arts experience.

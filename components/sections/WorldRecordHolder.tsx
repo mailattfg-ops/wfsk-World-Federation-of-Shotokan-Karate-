@@ -19,14 +19,17 @@ export async function WorldRecordHolder() {
             {/* Mobile/Tablet Wrapper (Grey background for the banner area) */}
             <div className="flex flex-col lg:block relative bg-[#E5E5E5] lg:p-2 lg:bg-white">
 
-                {/* Image Container - Full width on mobile/tablet, Padded on desktop */}
-                <div className="relative w-full aspect-4/3 sm:aspect-video lg:h-[650px]">
+                {/* Image Container - Full width, Height scales with content */}
+                <div className="relative w-full">
                     <Image
                         src={content.image_url}
                         alt={content.title}
-                        fill
-                        className="object-cover block rounded-none lg:rounded-sm"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        width={1920}
+                        height={1080}
+                        className="w-full h-auto block rounded-md"
+                        sizes="100vw"
+                        quality={90}
+                        priority
                     />
                 </div>
 

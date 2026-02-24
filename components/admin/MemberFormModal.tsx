@@ -212,7 +212,7 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                                     <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-4 tracking-widest">Official Belt Color</label>
                                     <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-3">
                                         {[
-                                            { name: 'White', color: '#FFFFFF' },
+                                            { name: 'Purple', color: '#9D00FF' },
                                             { name: 'Yellow', color: '#FACC15' },
                                             { name: 'Orange', color: '#F97316' },
                                             { name: 'Green', color: '#22C55E' },

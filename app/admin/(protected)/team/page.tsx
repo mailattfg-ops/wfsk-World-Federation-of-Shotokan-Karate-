@@ -172,6 +172,7 @@ export default async function TeamManagementPage({
 
             {/* Client-Side Modal for Add/Edit */}
             <MemberFormModal
+                key={`${showModal}-${editingMember?.id || 'new'}`}
                 isOpen={showModal}
                 role={categoryInfo.role}
                 country={categoryInfo.country}

@@ -59,7 +59,7 @@ export function TeamClient({ members }: TeamClientProps) {
                     title: "Directors",
                     description: (
                         <>
-                            World Federation of Shotokan Karate is having highly professional, reputed, qualified and updated bunch of <strong className="font-semibold">instructors with more than 30 years of national and international experience.</strong> Our trainers are dedicated and live members of World Federation of Shotokan Karate and are <strong className="font-semibold">well trained, well mannered and authorized to conduct training camps at schools.</strong>
+                            World Federation of Shotokan Karate is having highly professional, reputed, qualified and updated bunch of <strong className="font-semibold">instructors with more than 37 years of national and international experience.</strong> Our trainers are dedicated and live members of World Federation of Shotokan Karate and are <strong className="font-semibold">well trained, well mannered and authorized to conduct training camps at schools.</strong>
                         </>
                     ),
                     members: directors,

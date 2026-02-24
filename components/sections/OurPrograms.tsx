@@ -34,7 +34,7 @@ export function OurPrograms() {
             <div className="w-full mx-auto space-y-4 md:space-y-8">
                 {/* Header Section */}
                 <SectionHeader title={<>Our <br /> Programs</>}>
-                    At the World Federation of Shotokan Karate, we offer a range of programs led by our highly qualified instructors, each with over 30 years of national and international experience. Our dedicated trainers, who are active members of the federation, provide expertly designed training camps tailored for schools, ensuring a well-rounded and respectful learning environment.
+                    At the World Federation of Shotokan Karate, we offer a range of programs led by our highly qualified instructors, each with over 37 years of national and international experience. Our dedicated trainers, who are active members of the federation, provide expertly designed training camps tailored for schools, ensuring a well-rounded and respectful learning environment.
                 </SectionHeader>
 
                 {/* Programs Grid - Single column on tablet, 2 columns on desktop */}

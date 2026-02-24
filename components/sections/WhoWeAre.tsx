@@ -78,14 +78,14 @@ export function WhoWeAre() {
                     <div className="mt-8 w-full">
                         <div className="space-y-4 text-[#7C7C7C] font-(family-name:--font-geist-sans) text-xs sm:text-[20px] leading-relaxed text-center w-full max-w-4xl xl:max-w-7xl mx-auto">
                             <p>
-                                <strong className="font-semibold text-[#7C7C7C]">World Federation of Shotokan Karate (WFSK)</strong> was established in 2012 to deliver an authentic and complete martial arts experience. Today, WFSK operates internationally across <strong className="font-semibold text-[#7C7C7C]">India, UAE, Qatar, Bahrain, and Portugal</strong>, following global training standards.
+                                <strong className="font-semibold text-[#7C7C7C]">World Federation of Shotokan Karate (WFSK)</strong> was established in 2012 to deliver an authentic and complete martial arts experience. Today, WFSK operates internationally across <strong className="font-semibold text-[#7C7C7C]">India, UAE, Qatar, Saudi Arabia, Bahrain, U.K and Gambia</strong>, following global training standards.
                             </p>
                             <p>
-                                An ISO 9001:2015 certified federation, WFSK offers training in <strong className="font-semibold text-[#7C7C7C]">Karate-Do, self-defense, oriental weapons, and fitness</strong>, led by expert instructors with over 32 years of national and international experience.
+                                An ISO 9001:2015 certified federation, WFSK offers training in <strong className="font-semibold text-[#7C7C7C]">Karate-Do, self-defense, oriental weapons, and fitness</strong>, led by expert instructors with over 37 years of national and international experience.
                             </p>
                             <p>
                                 With authorized certifications, structured gradings, and a strong global network, <strong className="font-semibold text-[#7C7C7C]">WFSK is committed to discipline, excellence, and the true spirit of Shotokan Karate.</strong><br />
-                                World Headquarters: India.
+                                World Headquarters: UAE.
                             </p>
                         </div>
                     </div>

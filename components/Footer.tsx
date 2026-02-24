@@ -91,7 +91,7 @@ export function Footer() {
                     <div className="space-y-2 flex flex-col items-center xl:items-start">
                         <h3 className="text-[#111111] uppercase tracking-wide font-(family-name:--font-inter) font-bold text-base lg:text-xl xl:text-3xl leading-tight">ADDRESS</h3>
                         <p className="text-gray-500 font-(family-name:--font-geist-sans) text-sm lg:text-base leading-relaxed max-w-[280px] font-medium">
-                            Office 210, Al Serkal Avenue, Al Quoz Industrial Area 1, Dubai, United Arab Emirates
+                            Wfsk Head Office, Zulu Tower, Puthukulangara P.O Edassery, Thrissur, Kerala, India, 680569
                         </p>
                     </div>
                     <div className="space-y-2 flex flex-col items-center xl:items-start">
