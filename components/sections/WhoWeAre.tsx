@@ -28,46 +28,57 @@ export function WhoWeAre() {
                             <div className="flex flex-row items-center lg:items-center justify-center lg:justify-start w-full max-w-2xl mx-auto lg:mx-0">
                                 {/* Logo - Circular and sized for mobile row - Reduced for better fit */}
                                 <div className=" relative shrink-0 aspect-square">
-                                    <Image src="/images/logo.png" alt="WFSK Logo" className="object-contain w-[60px] h-auto md:w-[160px] md:h-[160px] xl:w-[200px] xl:h-[200px]" width={160}
+                                    <Image src="/images/logo.png" alt="WFSK Logo" className="object-contain w-[60px] h-auto md:w-[120px] md:h-[120px] lg:w-[160px] lg:h-[160px] xl:w-[200px] xl:h-[200px]" width={160}
                                         height={160}
 
                                     />
                                 </div>
 
-                                {/* Text Content - w-fit and items-stretch to make all children same width (widest element defines width) */}
-                                <div className="flex flex-col gap-0.4 sm:gap-1 w-fit items-stretch text-left">
-                                    {/* English Title - Compact on mobile to match red box width */}
-                                    <div className="text-[#E81E26] font-(family-name:--font-belanosima) font-normal uppercase leading-none text-[10px] sm:text-lg lg:text-xl xl:text-[28px] whitespace-nowrap">
-                                        World Federation of Shotokan Karate
+
+                                <div className="flex flex-col gap-[0.5vw] sm:gap-1 w-fit items-stretch text-left">
+                                    {/* English Title - Fluid scaling to match red box width */}
+                                    <div className="text-[#E81E26] font-(family-name:--font-belanosima) font-normal uppercase leading-none text-[clamp(10px,2vw,28px)] whitespace-nowrap flex justify-between">
+                                        {"World Federation of Shotokan Karate".split("").map((char, i) => (
+                                            <span key={i}>{char === " " ? "\u00A0" : char}</span>
+                                        ))}
                                     </div>
 
-
                                     {/* Japanese Text with horizontal lines */}
-                                    <div className="w-full flex items-center justify-center text-black font-bold leading-none gap-0.5 sm:gap-2">
-                                        <div className="h-[0.5px] sm:h-[2px] xl:h-[4px] grow bg-black"></div>
-                                        <span className="shrink-0 text-[10px] sm:text-[18px] lg:text-2xl xl:text-[28px] tracking-tighter sm:tracking-normal">ショトカ ン 空 手 の 世 界 連 盟</span>
-                                        <div className="h-[0.5px] sm:h-[2px] xl:h-[4px] grow bg-black"></div>
+                                    <div className="w-full flex items-center justify-center text-black font-bold leading-none gap-[0.5vw] sm:gap-2">
+                                        <div className="h-[max(0.5px,0.25vw)] grow bg-black"></div>
+                                        <span className="shrink-0 text-[clamp(10px,2vw,28px)] tracking-tighter sm:tracking-normal">
+                                            ショトカン空手の世界連盟
+                                        </span>
+                                        <div className="h-[max(0.5px,0.25vw)] grow bg-black"></div>
                                     </div>
 
                                     {/* Red Box Section */}
-                                    <div className="bg-[#E81E26] text-white rounded-[2px] sm:rounded-[4px] px-1 sm:px-2 py-1 sm:py-1 mt-0 w-full">
-                                        <p className="font-medium text-center leading-tight lg:leading-snug text-[4px] sm:text-[9px] xl:text-[11px]">
+                                    <div className="bg-[#E81E26] text-white rounded-[2px] sm:rounded-[4px] px-[1vw] py-[0.5vw] mt-0 w-full min-w-max">
+                                        <p className="font-medium text-center leading-tight lg:leading-snug text-[clamp(4px,0.8vw,11px)] whitespace-nowrap uppercase">
                                             AN ISO 9001:2015 CERTIFIED KARATE FEDERATION <br />
                                             WORLD RECORDS HOLDING KARATE FEDERATION – UNIVERSAL RECORDS FORUM 2024 & 2025
                                         </p>
                                     </div>
 
                                     {/* IAF & UAF Logos + HQ Text */}
-                                    <div className="flex flex-wrap items-center justify-start mt-0.5 sm:mt-2 gap-0.5 sm:gap-2">
-                                        <div className="flex items-center gap-0.5">
-                                            <div className="relative w-10 h-5 sm:w-20 sm:h-10">
+                                    <div className="flex flex-nowrap items-center justify-start mt-[0.5vw] sm:mt-2 gap-[1vw] sm:gap-2">
+                                        <div className="flex items-center gap-[0.5vw] shrink-0">
+                                            <div className="relative w-[clamp(32px,2.5vw,80px)] h-[clamp(16px,1.25vw,40px)]">
                                                 <Image src="/images/IAF.png" alt="IAF" fill className="object-contain" />
                                             </div>
-                                            <div className="relative w-14 h-5 sm:w-28 sm:h-10">
+                                            <div className="relative w-[clamp(44px,3.5vw,112px)] h-[clamp(16px,1.25vw,40px)]">
                                                 <Image src="/images/UAF.png" alt="UAF" fill className="object-contain" />
                                             </div>
+                                            <div className="relative w-[clamp(20px,1.25vw,40px)] h-[clamp(16px,1.25vw,40px)]">
+                                                <Image src="/images/bmg.png" alt="BMG" fill className="object-contain" />
+                                            </div>
+                                            <div className="relative w-[clamp(20px,1.25vw,40px)] h-[clamp(16px,1.25vw,40px)]">
+                                                <Image src="/images/URF.png" alt="URF" fill className="object-contain" />
+                                            </div>
                                         </div>
-                                        <span className="text-[6.5px] sm:text-[14px] font-bold text-black font-geist-sans whitespace-nowrap">World Headquarters - Dubai , UAE</span>
+                                        <span className="text-[clamp(5.5px,1vw,14px)] font-bold text-black font-geist-sans whitespace-nowrap shrink-0">
+                                            World Headquarters - Dubai , UAE
+                                        </span>
                                     </div>
                                 </div>
                             </div>
