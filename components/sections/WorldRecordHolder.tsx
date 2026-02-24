@@ -39,7 +39,7 @@ export async function WorldRecordHolder() {
                     {/* Texture/Pattern Overlay */}
                     <div className="absolute inset-0 opacity-40 mix-blend-overlay">
                         <Image
-                            src="/images/banner_image.jpg"
+                            src="/images/banner_image.webp"
                             alt="banner texture"
                             fill
                             className="object-cover"

@@ -52,7 +52,7 @@ export function ContactUs({ className = "" }: ContactUsProps) {
                 {/* Left Side - Image & Overlay */}
                 <div className="relative w-full md:w-1/2 min-h-[450px] md:min-h-full rounded-2xl overflow-hidden">
                     <Image
-                        src="/images/contact_img.jpg"
+                        src="/images/contact_img.webp"
                         alt="Karate Students"
                         fill
                         className="object-cover"
