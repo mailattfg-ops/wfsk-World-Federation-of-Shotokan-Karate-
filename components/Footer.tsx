@@ -69,9 +69,17 @@ export function Footer() {
                         </div>
 
                         <div className="flex flex-col items-start lg:items-center w-full pt-2 xl:pl-32">
-                            <p className="text-gray-500 text-sm font-(family-name:--font-geist-sans) mb-2 text-center">
-                                © 2025, WFSK. All Rights Reserved.
+                            <p className="text-gray-500 text-sm font-(family-name:--font-geist-sans) mb-1 text-center">
+                                © 2026, WFSK. All Rights Reserved.
                             </p>
+                            <Link
+                                href="https://www.thinkforgeglobal.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-400 text-[10px] hover:text-[#CC0000] transition-colors font-medium mb-4"
+                            >
+                                Designed and Developed by Think Forge Global
+                            </Link>
                             <div className="flex items-center justify-center gap-3">
                                 <Link
                                     href="https://www.instagram.com/wfsk_official?igsh=Z2p1cDBibDM5emx1"
@@ -132,6 +140,14 @@ export function Footer() {
                         <p className="text-gray-500 text-xs font-(family-name:--font-geist-sans)">
                             © 2025, WFSK. All Rights Reserved.
                         </p>
+                        <Link
+                            href="https://www.thinkforgeglobal.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 text-[10px] hover:text-[#CC0000] transition-colors font-medium"
+                        >
+                            Designed and Developed by Think Forge Global
+                        </Link>
                     </div>
                 </div>
 
