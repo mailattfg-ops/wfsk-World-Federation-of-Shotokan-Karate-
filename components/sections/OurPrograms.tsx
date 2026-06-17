@@ -6,25 +6,25 @@ const PROGRAMS = [
         title: "Kick Boxing training",
         badges: ["13-40 Years", "All Levels"],
         description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image1.jpg" // Placeholder
+        image: "/images/who_we_are_image1.webp" // Placeholder
     },
     {
         title: "Full contract fight training",
         badges: ["13-40 Years", "All Levels"],
         description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image2.jpg" // Placeholder
+        image: "/images/who_we_are_image2.webp" // Placeholder
     },
     {
         title: "Self Defense training",
         badges: ["13-40 Years", "All Levels"],
         description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image1.jpg" // Placeholder
+        image: "/images/who_we_are_image1.webp" // Placeholder
     },
     {
         title: "Sports Karate training",
         badges: ["13-40 Years", "All Levels"],
         description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image2.jpg" // Placeholder
+        image: "/images/who_we_are_image2.webp" // Placeholder
     },
 ];
 
