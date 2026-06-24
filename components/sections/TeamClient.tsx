@@ -114,12 +114,15 @@ export function TeamClient({ members }: TeamClientProps) {
                 };
 
                 sections.push({
-                    id: `instructors-${country}`,
-                    title: `Our Instructors in ${country}`,
+                    id: "national-chief-instructors",
+                    title: "Our Instructors",
                     members: countryInstructors,
-                    type: "instructor",
-                    countryName: country,
-                    flagCode: flagMapping[country] || country.toLowerCase().slice(0, 2)
+                    type: "standard",
+                    description: (
+                        <>
+                            Our Instructors representing  , bringing extensive experience and leadership to the federation.
+                        </>
+                    )
                 });
             }
         });
