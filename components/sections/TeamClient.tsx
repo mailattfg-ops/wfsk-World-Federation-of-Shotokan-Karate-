@@ -69,7 +69,7 @@ export function TeamClient({ members }: TeamClientProps) {
             if (executives.length > 0) {
                 sections.push({
                     id: "executive",
-                    title: "Executive Members",
+                    title: "Our Executive Members",
                     members: executives,
                     type: "centered"
                 });
@@ -102,7 +102,7 @@ export function TeamClient({ members }: TeamClientProps) {
             if (otherInstructors.length > 0) {
                 sections.push({
                     id: "our-instructors",
-                    title: "Our Instructors",
+                    title: "Instructors",
                     members: otherInstructors,
                     type: "standard",
                     description: (
