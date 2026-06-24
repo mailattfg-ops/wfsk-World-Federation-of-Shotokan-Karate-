@@ -20,6 +20,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         { href: '/admin/news', label: 'News & Events', activeDot: true },
         { href: '/admin/world-record', label: 'World Record', activeDot: true },
         { href: '/admin/who-we-are', label: 'Who We Are', activeDot: true },
+        { href: '/admin/programs', label: 'Programs', activeDot: true },
     ]
 
     return (

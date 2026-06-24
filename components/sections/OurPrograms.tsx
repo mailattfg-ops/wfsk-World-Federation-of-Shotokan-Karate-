@@ -1,34 +1,10 @@
 import Image from "next/image";
 import { SectionHeader } from "../SectionHeader";
+import { getPrograms } from "@/lib/actions/programs";
 
-const PROGRAMS = [
-    {
-        title: "Kick Boxing training",
-        badges: ["13-40 Years", "All Levels"],
-        description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image1.webp" // Placeholder
-    },
-    {
-        title: "Full contract fight training",
-        badges: ["13-40 Years", "All Levels"],
-        description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image2.webp" // Placeholder
-    },
-    {
-        title: "Self Defense training",
-        badges: ["13-40 Years", "All Levels"],
-        description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image1.webp" // Placeholder
-    },
-    {
-        title: "Sports Karate training",
-        badges: ["13-40 Years", "All Levels"],
-        description: "Backed by over three decades of national and international martial arts experience.",
-        image: "/images/who_we_are_image2.webp" // Placeholder
-    },
-];
+export async function OurPrograms() {
+    const programs = await getPrograms();
 
-export function OurPrograms() {
     return (
         <section className="w-full bg-[#E5E5E5] p-2 sm:p-4">
             <div className="w-full mx-auto space-y-4 md:space-y-8">
@@ -39,12 +15,12 @@ export function OurPrograms() {
 
                 {/* Programs Grid - Single column on tablet, 2 columns on desktop */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-6">
-                    {PROGRAMS.map((program, index) => (
-                        <div key={index} className="bg-white overflow-hidden flex shadow-sm min-h-[280px] sm:min-h-[320px] md:min-h-[300px] lg:min-h-[400px]">
+                    {programs.map((program, index) => (
+                        <div key={program.id || index} className="bg-white overflow-hidden flex shadow-sm min-h-[280px] sm:min-h-[320px] md:min-h-[300px] lg:min-h-[400px]">
                             {/* Text Content (Left) */}
                             <div className="w-[55%] p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
                                 {/* Badges */}
-                                <div className="flex flex-nowrap gap-1 sm:gap-2 mb-2 lg:mb-4 overflow-hidden">
+                                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 lg:mb-4 overflow-hidden">
                                     {program.badges.map((badge, idx) => (
                                         <span key={idx} className="bg-[#E6E6E6] text-[8px] sm:text-xs lg:text-sm font-semibold text-[#262626] px-2 lg:px-3 py-0.5 lg:py-1 rounded-md font-(family-name:--font-geist-sans) whitespace-nowrap">
                                             {badge}
@@ -66,10 +42,11 @@ export function OurPrograms() {
                             {/* Image (Right) */}
                             <div className="w-[45%] relative">
                                 <Image
-                                    src={program.image}
+                                    src={program.image_url}
                                     alt={program.title}
                                     fill
                                     className="object-cover"
+                                    unoptimized={program.image_url.startsWith('http')}
                                 />
                             </div>
                         </div>
@@ -79,3 +56,4 @@ export function OurPrograms() {
         </section>
     );
 }
+
