@@ -12,8 +12,8 @@ const WhoWeAreSchema = z.object({
   certified_box: z.string().min(2, "Certification text is required"),
   hq: z.string().min(2, "Headquarters location is required"),
   paragraphs: z.array(z.string()).min(1, "At least one paragraph of content is required"),
-  image1_url: z.string().url("Invalid image 1 URL"),
-  image2_url: z.string().url("Invalid image 2 URL"),
+  image1_url: z.string().min(1, "Image 1 is required"),
+  image2_url: z.string().min(1, "Image 2 is required"),
 })
 
 const FALLBACK_DATA = {
