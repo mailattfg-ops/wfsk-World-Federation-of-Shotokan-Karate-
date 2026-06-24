@@ -15,8 +15,8 @@ interface CategoryInfo {
 const CATEGORIES: Record<string, CategoryInfo> = {
     directors: { title: "Directors", description: "Governing body of WFSK", role: "director" },
     executive: { title: "Executive", description: "Administrative roles", role: "executive" },
-    uae: { title: "UAE Instructors", description: "UAE branch leaders", role: "instructor", country: "UAE" },
-    india: { title: "India Instructors", description: "India branch leaders", role: "instructor", country: "India" },
+    national_chief: { title: "National Chief Instructors", description: "National Chief Instructors of UAE & India", role: "instructor", country: "National Chief" },
+    our_instructors: { title: "Our Instructors", description: "General federation instructors", role: "instructor", country: "Our Instructors" },
     blackbelts: { title: "Black Belts", description: "Federation members", role: "black_belt" },
 };
 
@@ -31,7 +31,16 @@ export default async function TeamManagementPage({
     const showModal = params.showModal === "true";
     const categoryInfo = CATEGORIES[currentCategory] || CATEGORIES.directors;
 
-    const members = await getMembers(categoryInfo.role, categoryInfo.country);
+    let members: Member[] = [];
+    if (currentCategory === "national_chief") {
+        const allInstructors = await getMembers("instructor");
+        members = allInstructors.filter((m: Member) => m.country === "UAE" || m.country === "India");
+    } else if (currentCategory === "our_instructors") {
+        const allInstructors = await getMembers("instructor");
+        members = allInstructors.filter((m: Member) => m.country !== "UAE" && m.country !== "India");
+    } else {
+        members = await getMembers(categoryInfo.role, categoryInfo.country);
+    }
 
     // Determine the editing member if in edit mode
     const editingMember = editId ? members.find((m: Member) => m.id === editId) : null;

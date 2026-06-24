@@ -82,7 +82,9 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
 
                 <form action={handleSubmit} className="p-5 md:p-8 space-y-6">
                     <input type="hidden" name="role" value={role} />
-                    {country && <input type="hidden" name="country" value={country} />}
+                    {country && category !== "national_chief" && category !== "our_instructors" && (
+                        <input type="hidden" name="country" value={country} />
+                    )}
                     <input type="hidden" name="image_url" value={editingMember?.image_url || "https://res.cloudinary.com/placeholder"} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
@@ -109,6 +111,34 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                                     placeholder="e.g. Chief Instructor"
                                 />
                             </div>
+
+                            {category === "national_chief" && (
+                                <div>
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Country Location</label>
+                                    <select
+                                        name="country"
+                                        required
+                                        defaultValue={editingMember?.country || "UAE"}
+                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all bg-[#111111]"
+                                    >
+                                        <option value="UAE" className="bg-[#111111] text-white">UAE</option>
+                                        <option value="India" className="bg-[#111111] text-white">India</option>
+                                    </select>
+                                </div>
+                            )}
+
+                            {category === "our_instructors" && (
+                                <div>
+                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Country Location</label>
+                                    <input
+                                        name="country"
+                                        required
+                                        defaultValue={editingMember?.country || ""}
+                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
+                                        placeholder="Enter country (e.g. Gambia)"
+                                    />
+                                </div>
+                            )}
 
                             <div>
                                 <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Rank / Belt</label>

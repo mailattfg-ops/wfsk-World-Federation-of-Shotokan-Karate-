@@ -40,12 +40,7 @@ interface TeamClientProps {
 export function TeamClient({ members }: TeamClientProps) {
     const [activeFilter, setActiveFilter] = useState("All");
 
-    const countries = useMemo(() => {
-        const uniqueCountries = Array.from(new Set(members.filter(m => m.role === 'instructor' && m.country).map(m => m.country!))).sort();
-        return uniqueCountries;
-    }, [members]);
-
-    const filters = ["All", "Directors", "Executive", ...countries];
+    const filters = ["All", "Directors", "Executive", "National Chief Instructors", "Our Instructors"];
 
     const filteredSections = useMemo(() => {
         const sections: Section[] = [];
@@ -81,21 +76,38 @@ export function TeamClient({ members }: TeamClientProps) {
             }
         }
 
-        // Instructors by Country
         const baseInstructors = members.filter(m => m.role === 'instructor');
-        const instructorCountries = activeFilter === "All"
-            ? countries
-            : countries.filter(c => c === activeFilter);
 
-        instructorCountries.forEach(country => {
-            const countryInstructors = baseInstructors.filter(m => m.country === country);
+        // National Chief Instructors
+        if (activeFilter === "All" || activeFilter === "National Chief Instructors") {
+            const chiefs = baseInstructors.filter(m => m.country === 'UAE' || m.country === 'India');
+            if (chiefs.length > 0) {
+                sections.push({
+                    id: "national-chief-instructors",
+                    title: "National Chief Instructors",
+                    members: chiefs,
+                    type: "standard",
+                    description: (
+                        <>
+                            WFSK National Chief Instructors representing UAE and India, bringing extensive experience and leadership to the federation.
+                        </>
+                    )
+                });
+            }
+        }
+
+        // Our Instructors (other countries, grouped by country)
+        const otherInstructors = baseInstructors.filter(m => m.country !== 'UAE' && m.country !== 'India');
+        const otherCountries = Array.from(new Set(otherInstructors.filter(m => m.country).map(m => m.country!))).sort();
+
+        const countriesToRender = activeFilter === "All"
+            ? otherCountries
+            : (activeFilter === "Our Instructors" ? otherCountries : []);
+
+        countriesToRender.forEach(country => {
+            const countryInstructors = otherInstructors.filter(m => m.country === country);
             if (countryInstructors.length > 0) {
-                // Get flag code (mapping or assuming it's available)
-                // In InstructorsSection it's passed as prop. I'll need a way to get it.
-                // For now I'll use a simple mapping or just use country name if code not available.
                 const flagMapping: { [key: string]: string } = {
-                    "UAE": "ae",
-                    "India": "in",
                     "Gambia": "gm",
                     "Qatar": "qa",
                     "Bahrain": "bh"
@@ -113,7 +125,7 @@ export function TeamClient({ members }: TeamClientProps) {
         });
 
         return sections;
-    }, [activeFilter, members, countries]);
+    }, [activeFilter, members]);
 
     return (
         <div className="space-y-0">
