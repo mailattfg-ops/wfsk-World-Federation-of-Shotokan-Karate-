@@ -115,15 +115,13 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                             {category === "national_chief" && (
                                 <div>
                                     <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Country Location</label>
-                                    <select
+                                    <input
                                         name="country"
                                         required
-                                        defaultValue={editingMember?.country || "UAE"}
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all bg-[#111111]"
-                                    >
-                                        <option value="UAE" className="bg-[#111111] text-white">UAE</option>
-                                        <option value="India" className="bg-[#111111] text-white">India</option>
-                                    </select>
+                                        defaultValue={editingMember?.country || ""}
+                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
+                                        placeholder="Enter country (e.g. UAE, India, Qatar)"
+                                    />
                                 </div>
                             )}
 

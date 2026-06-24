@@ -15,7 +15,7 @@ interface CategoryInfo {
 const CATEGORIES: Record<string, CategoryInfo> = {
     directors: { title: "Directors", description: "Governing body of WFSK", role: "director" },
     executive: { title: "Executive", description: "Administrative roles", role: "executive" },
-    national_chief: { title: "National Chief Instructors", description: "National Chief Instructors of UAE & India", role: "instructor", country: "National Chief" },
+    national_chief: { title: "National Chief Instructors", description: "National Chief Instructors of WFSK", role: "instructor", country: "National Chief" },
     our_instructors: { title: "Our Instructors", description: "General federation instructors", role: "instructor", country: "Our Instructors" },
     blackbelts: { title: "Black Belts", description: "Federation members", role: "black_belt" },
 };
@@ -34,10 +34,10 @@ export default async function TeamManagementPage({
     let members: Member[] = [];
     if (currentCategory === "national_chief") {
         const allInstructors = await getMembers("instructor");
-        members = allInstructors.filter((m: Member) => m.country === "UAE" || m.country === "India");
+        members = allInstructors.filter((m: Member) => m.position.toLowerCase().includes("chief"));
     } else if (currentCategory === "our_instructors") {
         const allInstructors = await getMembers("instructor");
-        members = allInstructors.filter((m: Member) => m.country !== "UAE" && m.country !== "India");
+        members = allInstructors.filter((m: Member) => !m.position.toLowerCase().includes("chief"));
     } else {
         members = await getMembers(categoryInfo.role, categoryInfo.country);
     }

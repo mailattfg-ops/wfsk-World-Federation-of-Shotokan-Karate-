@@ -80,7 +80,7 @@ export function TeamClient({ members }: TeamClientProps) {
 
         // National Chief Instructors
         if (activeFilter === "All" || activeFilter === "National Chief Instructors") {
-            const chiefs = baseInstructors.filter(m => m.country === 'UAE' || m.country === 'India');
+            const chiefs = baseInstructors.filter(m => m.position.toLowerCase().includes('chief'));
             if (chiefs.length > 0) {
                 sections.push({
                     id: "national-chief-instructors",
@@ -89,7 +89,7 @@ export function TeamClient({ members }: TeamClientProps) {
                     type: "standard",
                     description: (
                         <>
-                            WFSK National Chief Instructors representing UAE and India, bringing extensive experience and leadership to the federation.
+                            WFSK National Chief Instructors representing their respective countries, bringing extensive experience and leadership to the federation.
                         </>
                     )
                 });
@@ -98,7 +98,7 @@ export function TeamClient({ members }: TeamClientProps) {
 
         // Our Instructors
         if (activeFilter === "All" || activeFilter === "Our Instructors") {
-            const otherInstructors = baseInstructors.filter(m => m.country !== 'UAE' && m.country !== 'India');
+            const otherInstructors = baseInstructors.filter(m => !m.position.toLowerCase().includes('chief'));
             if (otherInstructors.length > 0) {
                 sections.push({
                     id: "our-instructors",
