@@ -96,36 +96,23 @@ export function TeamClient({ members }: TeamClientProps) {
             }
         }
 
-        // Our Instructors (other countries, grouped by country)
-        const otherInstructors = baseInstructors.filter(m => m.country !== 'UAE' && m.country !== 'India');
-        const otherCountries = Array.from(new Set(otherInstructors.filter(m => m.country).map(m => m.country!))).sort();
-
-        const countriesToRender = activeFilter === "All"
-            ? otherCountries
-            : (activeFilter === "Our Instructors" ? otherCountries : []);
-
-        countriesToRender.forEach(country => {
-            const countryInstructors = otherInstructors.filter(m => m.country === country);
-            if (countryInstructors.length > 0) {
-                const flagMapping: { [key: string]: string } = {
-                    "Gambia": "gm",
-                    "Qatar": "qa",
-                    "Bahrain": "bh"
-                };
-
+        // Our Instructors
+        if (activeFilter === "All" || activeFilter === "Our Instructors") {
+            const otherInstructors = baseInstructors.filter(m => m.country !== 'UAE' && m.country !== 'India');
+            if (otherInstructors.length > 0) {
                 sections.push({
-                    id: "national-chief-instructors",
+                    id: "our-instructors",
                     title: "Our Instructors",
-                    members: countryInstructors,
+                    members: otherInstructors,
                     type: "standard",
                     description: (
                         <>
-                            Our Instructors representing  , bringing extensive experience and leadership to the federation.
+                            World Federation of Shotokan Karate has a highly professional, reputed, and qualified group of instructors with national and international experience.
                         </>
                     )
                 });
             }
-        });
+        }
 
         return sections;
     }, [activeFilter, members]);
