@@ -34,7 +34,7 @@ export default async function TeamManagementPage({
     let members: Member[] = [];
     if (currentCategory === "national_chief") {
         const allInstructors = await getMembers("instructor");
-        members = allInstructors.filter((m: Member) => m.country === "National Chief");
+        members = allInstructors.filter((m: Member) => m.country !== "Our Instructors");
     } else if (currentCategory === "our_instructors") {
         const allInstructors = await getMembers("instructor");
         members = allInstructors.filter((m: Member) => m.country === "Our Instructors");

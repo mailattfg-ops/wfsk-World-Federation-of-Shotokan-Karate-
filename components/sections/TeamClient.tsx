@@ -80,7 +80,7 @@ export function TeamClient({ members }: TeamClientProps) {
 
         // National Chief Instructors
         if (activeFilter === "All" || activeFilter === "National Chief Instructors") {
-            const chiefs = baseInstructors.filter(m => m.country === 'National Chief');
+            const chiefs = baseInstructors.filter(m => m.country !== 'Our Instructors');
             if (chiefs.length > 0) {
                 sections.push({
                     id: "national-chief-instructors",
@@ -102,7 +102,7 @@ export function TeamClient({ members }: TeamClientProps) {
             if (otherInstructors.length > 0) {
                 sections.push({
                     id: "our-instructors",
-                    title: "Instructors",
+                    title: "Our Instructors",
                     members: otherInstructors,
                     type: "standard",
                     description: (
