@@ -51,7 +51,7 @@ export function TeamClient({ members }: TeamClientProps) {
             if (directors.length > 0) {
                 sections.push({
                     id: "directors",
-                    title: "Directors",
+                    title: "Our Directors",
                     description: (
                         <>
                             World Federation of Shotokan Karate is having highly professional, reputed, qualified and updated bunch of <strong className="font-semibold">instructors with more than 37 years of national and international experience.</strong> Our trainers are dedicated and live members of World Federation of Shotokan Karate and are <strong className="font-semibold">well trained, well mannered and authorized to conduct training camps at schools.</strong>
@@ -80,7 +80,7 @@ export function TeamClient({ members }: TeamClientProps) {
 
         // National Chief Instructors
         if (activeFilter === "All" || activeFilter === "National Chief Instructors") {
-            const chiefs = baseInstructors.filter(m => m.position.toLowerCase().includes('chief'));
+            const chiefs = baseInstructors.filter(m => m.country === 'National Chief');
             if (chiefs.length > 0) {
                 sections.push({
                     id: "national-chief-instructors",
@@ -98,7 +98,7 @@ export function TeamClient({ members }: TeamClientProps) {
 
         // Our Instructors
         if (activeFilter === "All" || activeFilter === "Our Instructors") {
-            const otherInstructors = baseInstructors.filter(m => !m.position.toLowerCase().includes('chief'));
+            const otherInstructors = baseInstructors.filter(m => m.country === 'Our Instructors');
             if (otherInstructors.length > 0) {
                 sections.push({
                     id: "our-instructors",
@@ -133,7 +133,7 @@ export function TeamClient({ members }: TeamClientProps) {
                         <div className="w-full mx-auto space-y-4 md:space-y-8 lg:space-y-12">
                             {section.type === "standard" && (
                                 <>
-                                    <SectionHeader title={<>Our <br className="hidden md:block" /> {section.title}</>}>
+                                    <SectionHeader title={<><br className="hidden md:block" /> {section.title}</>}>
                                         {section.description}
                                     </SectionHeader>
                                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 sm:gap-6 px-1 sm:px-0">

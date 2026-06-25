@@ -156,8 +156,8 @@ export async function updateProgram(id: string, formData: FormData) {
     }
 
     // Final Validation Check for image
-    if (!image_url) {
-      return { success: false, error: "Photo/Image is required." }
+    if (!image_url || image_url === 'https://res.cloudinary.com/placeholder') {
+      return { success: false, error: "Photo/Image is required. Please upload or keep the existing image." }
     }
 
     const badgesInput = formData.get('badges') as string || '[]';
@@ -190,12 +190,14 @@ export async function updateProgram(id: string, formData: FormData) {
     revalidatePath('/admin/programs')
 
     return { success: true }
-  } catch (error) {
+  } catch (error: any) {
     console.error('SERVER ACTION ERROR (updateProgram):', error)
     if (error instanceof z.ZodError) {
       return { success: false, error: error.issues[0].message }
     }
-    return { success: false, error: error instanceof Error ? error.message : "Failed to update program" }
+    // Surface the real Supabase/DB error message
+    const msg = error?.message || error?.details || JSON.stringify(error) || "Failed to update program"
+    return { success: false, error: msg }
   }
 }
 

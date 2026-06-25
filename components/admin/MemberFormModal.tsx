@@ -85,6 +85,9 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                     {country && category !== "national_chief" && category !== "our_instructors" && (
                         <input type="hidden" name="country" value={country} />
                     )}
+                    {category === "our_instructors" && (
+                        <input type="hidden" name="country" value="Our Instructors" />
+                    )}
                     <input type="hidden" name="image_url" value={editingMember?.image_url || "https://res.cloudinary.com/placeholder"} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
@@ -125,18 +128,7 @@ export default function MemberFormModal({ isOpen, onClose, editingMember, role, 
                                 </div>
                             )}
 
-                            {category === "our_instructors" && (
-                                <div>
-                                    <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Country Location</label>
-                                    <input
-                                        name="country"
-                                        required
-                                        defaultValue={editingMember?.country || ""}
-                                        className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl outline-none focus:ring-2 focus:ring-red-400 text-white text-xs md:text-sm transition-all placeholder:text-white/10"
-                                        placeholder="Enter country (e.g. Gambia)"
-                                    />
-                                </div>
-                            )}
+
 
                             <div>
                                 <label className="block text-[9px] md:text-[10px] font-black uppercase text-white/40 mb-1.5 tracking-widest">Rank / Belt</label>
